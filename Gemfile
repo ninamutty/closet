@@ -1,5 +1,18 @@
 source 'https://rubygems.org'
 
+gem "awesome_print"
+
+# Amazon Web Services
+gem 'aws-sdk', '~> 2'
+gem 'aws-sdk-rails'
+
+#Foundation Rails gem
+gem 'foundation-rails'
+gem 'jquery-turbolinks'
+
+# Sign In Links
+gem "omniauth"
+gem "omniauth-github"
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.7'
@@ -35,6 +48,9 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
+  gem 'dotenv-rails'
+  gem 'better_errors'
+  gem 'pry'
 end
 
 group :development do
@@ -45,3 +61,6 @@ group :development do
   gem 'spring'
 end
 
+group :test do
+  gem 'minitest-reporters'
+end
