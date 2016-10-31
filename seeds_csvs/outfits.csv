@@ -1,0 +1,16 @@
+id,name,last_worn,category,reworn_count,favorite,photo
+1,"Jeans and stripes",2016-10-06T13:00:23-07:00,"casual",2,true,IMG_1290.jpg
+3,"Black Pants and Tropic Sweater",2016-10-03T13:00:23-07:00,"business",0,false,IMG_1295.jpg
+4,"Sequin Dress",2016-10-03T13:00:23-07:00,"fancy",0,true
+5,"Dress and Sweater",2016-08-07T13:00:23-07:00,"casual",1,false,IMG_0546.jpg
+6,"Black V Neck",2016-08-03T13:00:23-07:00,"fancy",1,true,pic.jpg
+7,"Skirt and Sweater",2015-11-04T13:00:23-07:00,"casual",3,false,IMG_0874.jpg
+8,"Sporty!",2016-09-07T13:00:23-07:00,"casual",0,false,IMG_1294.jpg
+10,"Red t-shirt and jeans",2016-10-08T13:00:23-07:00,"casual",1,false,IMG_1297.jpg
+11,"All navy tops!",2016-10-09T13:00:23-07:00,"casual",3,true,IMG_1298.jpg
+12,"Arty as f*$%",2016-09-12T13:00:23-07:00,"business",0,false,IMG_1306.jpg
+13,"Cav-empt",2016-08-12T13:00:23-07:00,"casual",0,false,IMG_1308.jpg
+14,"Black and gold",2016-08-21T13:00:23-07:00,"business",2,true,IMG_1311.jpg
+15,"La Tropical (with pants)",2016-10-01T13:00:23-07:00,"business",1,true,IMG_1312.jpg
+16,"mock-necks",2016-08-01T13:00:23-07:00,"business",0,false,IMG_1314.jpg
+17,"slate blue and jeans",2016-07-11T13:00:23-07:00,"business",1,false,IMG_1316.jpg

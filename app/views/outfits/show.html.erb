@@ -1,2 +1,31 @@
-<h1>Outfits#show</h1>
-<p>Find me in app/views/outfits/show.html.erb</p>
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @outfit.name %>
+</p>
+
+<p>
+  <strong>Last worn:</strong>
+  <%= @outfit.last_worn %>
+</p>
+
+<p>
+  <strong>Category:</strong>
+  <%= @outfit.category %>
+</p>
+
+<p>
+  <strong>Reworn count:</strong>
+  <%= @outfit.reworn_count %>
+</p>
+
+<p>
+  <strong>Favorite:</strong>
+  <%= @outfit.favorite %>
+</p>
+
+<%= image_tag(@outfit.photo.url(:medium), alt: "photo of #{@outfit.name}") %>
+
+<%= link_to 'Edit', edit_outfit_path(@outfit) %> |
+<%= link_to 'Back', outfits_path %>

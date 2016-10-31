@@ -1,2 +1,40 @@
-<h1>Outfits#index</h1>
-<p>Find me in app/views/outfits/index.html.erb</p>
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Outfits</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Photos</th>
+      <!-- <th>Category</th>
+      <th>Reworn count</th> -->
+      <th>Favorite</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @outfits.each do |outfit| %>
+      <tr>
+        <td><%= outfit.name %></td>
+        <% photo = outfit.photo %>
+        <% if photo != nil %>
+          <%= image_tag(outfit.photo.url, alt: "photo of #{outfit.name}") %>
+        <% else %>
+          <td>No Photo</td>
+        <% end %>
+        <!-- <td><%= outfit.category %></td>
+        <td><%= outfit.reworn_count %></td> -->
+        <td><%= outfit.favorite %></td>
+        <td><%= link_to 'Show', outfit %></td>
+        <td><%= link_to 'Edit', edit_outfit_path(outfit) %></td>
+        <td><%= link_to 'Destroy', outfit, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Outfit', new_outfit_path %>

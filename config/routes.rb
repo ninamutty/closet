@@ -1,17 +1,10 @@
 Rails.application.routes.draw do
-  get 'outfits/index'
 
-  get 'outfits/show'
+  root to: 'outfits#index'
 
-  get 'outfits/new'
+  resources :outfits
 
-  get 'outfits/create'
 
-  get 'outfits/edit'
-
-  get 'outfits/update'
-
-  get 'outfits/destroy'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
