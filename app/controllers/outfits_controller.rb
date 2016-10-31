@@ -48,14 +48,14 @@ class OutfitsController < ApplicationController
     @outfit = find_outfit
     if @outfit.class == Outfit
       @outfit.destroy
-      render outfit_path(@outfit.id)
+      redirect_to outfits_path
     end
   end
 
   private
 
   def outfit_params
-    params.require(:outfit).permit(:name, :last_worn, :category, :reworn_count, :favorite)
+    params.require(:outfit).permit(:name, :last_worn, :category, :reworn_count, :favorite, :photo)
   end
 
   def find_outfit
