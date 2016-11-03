@@ -11,7 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161031012521) do
+ActiveRecord::Schema.define(version: 20161103054058) do
+
+  create_table "outfit_tags", force: :cascade do |t|
+    t.integer  "tag_id"
+    t.integer  "outfit_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "outfit_tags", ["outfit_id"], name: "index_outfit_tags_on_outfit_id"
+  add_index "outfit_tags", ["tag_id"], name: "index_outfit_tags_on_tag_id"
 
   create_table "outfits", force: :cascade do |t|
     t.string   "name"
@@ -25,6 +35,12 @@ ActiveRecord::Schema.define(version: 20161031012521) do
     t.string   "photo_content_type"
     t.integer  "photo_file_size"
     t.datetime "photo_updated_at"
+  end
+
+  create_table "tags", force: :cascade do |t|
+    t.text     "label"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
 end

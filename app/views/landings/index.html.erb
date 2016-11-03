@@ -1,6 +1,20 @@
 <h1>Welcome to Closet! </h1>
 
 <h3> Categories </h3>
+  <p><%= link_to "All", outfits_path %></p>
+  <p> <%= link_to "Casual", category_path(category: 'casual') %> </p>
+  <p> <%= link_to "Business", category_path(category: 'business') %> </p>
+  <p> <%= link_to "Night Out", category_path(category: 'night_out') %> </p>
+  <p> <%= link_to "Fancy", category_path(category: 'fancy') %> </p>
 
+<h3><%= link_to "Favorites", favorite_path(favorite: true) %> </h3>
 
-<h3><%= link_to "Favorites", favorite_path %> Favorites </h3>
+<%= form_for @tag, method: :get, tags_path do |f| %>
+  <div class="form_attribute">
+    <%= f.label :tags %>
+    <%= f.select(:tags, @tags.map.with_index {|tag, index| [tag.label, tag.label]}, {include_blank: true, multiple: true}) %>
+  </div>
+  <div class="form_attribute">
+    <%= f.submit class:"button" %>
+  </div>
+<% end %>

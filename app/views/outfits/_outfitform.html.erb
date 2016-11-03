@@ -37,6 +37,11 @@
     <%= f.file_field :photo %>
   </div>
 
+  <div class="field">
+    <%= f.label :tags %>
+    <%= f.collection_check_boxes(:tag_ids, Tag.all, :id, :label) %>
+  </div>
+
   <div class="actions">
     <%= f.submit %>
   </div>

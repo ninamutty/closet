@@ -27,5 +27,15 @@
 
 <%= image_tag(@outfit.photo.url(:medium), alt: "photo of #{@outfit.name}") %>
 
+<% unless @tags.length == 0 %>
+  <p>
+    <strong>Tags:</strong>
+    <% @tags.each do |tag| %>
+      <p> <%= tag.label %> </p>
+    <% end %>
+  </p>
+<% end %>
+
+
 <%= link_to 'Edit', edit_outfit_path(@outfit) %> |
 <%= link_to 'Back', outfits_path %>

@@ -4,6 +4,8 @@ Rails.application.routes.draw do
 
   get 'landings/show'
 
+  get 'landings/add_selection/:tag' => 'landings#add_selection', as: 'add_selection'
+
   root to: 'landings#index'
 
   resources :outfits
