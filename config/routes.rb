@@ -1,4 +1,20 @@
 Rails.application.routes.draw do
+
+  get 'landings/index'
+
+  get 'landings/show'
+
+  root to: 'landings#index'
+
+  resources :outfits
+
+  get 'outfits/category/:category' => 'outfits#category', as: 'category'
+
+  get 'outfits/favorite/:favorite' => 'outfits#favorite', as: 'favorite'
+
+
+
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

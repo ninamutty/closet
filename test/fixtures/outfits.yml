@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  last_worn: 2016-10-30 16:52:54
+  category: MyString
+  reworn_count: 1
+  favorite: false
+
+two:
+  name: MyString
+  last_worn: 2016-10-30 16:52:54
+  category: MyString
+  reworn_count: 1
+  favorite: false
