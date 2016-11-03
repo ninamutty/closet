@@ -1,8 +1,17 @@
 Rails.application.routes.draw do
 
-  root to: 'outfits#index'
+  get 'landings/index'
+
+  get 'landings/show'
+
+  root to: 'landings#index'
 
   resources :outfits
+
+  get 'outfits/category/:category' => 'outfits#category', as: 'category'
+
+  get 'outfits/favorite/:favorite' => 'outfits#favorite', as: 'favorite'
+
 
 
 

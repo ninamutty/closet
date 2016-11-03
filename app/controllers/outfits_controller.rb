@@ -3,6 +3,18 @@ class OutfitsController < ApplicationController
 
   def index
     @outfits = Outfit.all
+    @casual = Outfit.where(category: 'casual')
+    @business = Outfit.where(category: 'business')
+    @night_out = Outfit.where(category: 'night_out')
+    @fancy = Outfit.where(category: 'fancy')
+  end
+
+  def category
+    @outfits = Outfit.where(category: params[:category])
+  end
+
+  def favorite
+    @outfits = Outfit.where(favorite: true)
   end
 
   def show
@@ -34,7 +46,7 @@ class OutfitsController < ApplicationController
 
   def update
     if @outfit.update(outfit_params)
-      render outfit_path(@outfit.id)
+      redirect_to outfit_path(@outfit.id)
     else
       @error = "Did not save succesfully. Please try again."
       @post_method = :put

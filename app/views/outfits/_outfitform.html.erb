@@ -21,7 +21,7 @@
   </div>
   <div class="field">
     <%= f.label :category %><br>
-    <%= f.text_field :category %>
+    <%= f.select(:category, [["Casual", 'casual'], ["Business", 'business'], ["Night Out", 'night_out'], ["Fancy", "fancy"]])%>
   </div>
   <div class="field">
     <%= f.label :reworn_count %><br>
