@@ -9,7 +9,7 @@
 
 <h3><%= link_to "Favorites", favorite_path(favorite: true) %> </h3>
 
-<%= form_for @tag, method: :get, tags_path do |f| %>
+<%= form_for @tags, method: :get, tags_path do |f| %>
   <div class="form_attribute">
     <%= f.label :tags %>
     <%= f.select(:tags, @tags.map.with_index {|tag, index| [tag.label, tag.label]}, {include_blank: true, multiple: true}) %>
