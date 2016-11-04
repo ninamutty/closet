@@ -9,12 +9,22 @@
 
 <h3><%= link_to "Favorites", favorite_path(favorite: true) %> </h3>
 
-<%= form_for @tags, method: :get, tags_path do |f| %>
-  <div class="form_attribute">
-    <%= f.label :tags %>
-    <%= f.select(:tags, @tags.map.with_index {|tag, index| [tag.label, tag.label]}, {include_blank: true, multiple: true}) %>
+
+
+<%# Do This to be like health tag search for recipe api  %>
+<%# form_for @tags, method: :get, tags_path do |f| %>
+  <!-- <div class="form_attribute">
+    <%# f.label :tags %>
+    <%# f.select(:tags, @tags.map.with_index {|tag, index| [tag.label, tag.label]}, {include_blank: true, multiple: true}) %>
   </div>
   <div class="form_attribute">
-    <%= f.submit class:"button" %>
-  </div>
+    <%# f.submit class:"button" %>
+  </div> -->
+<%# end %>
+<%= form_tag(find_tag_outfits_path, method: :get) do %>
+  <% @tags.each do |tag| %>
+    <%= label_tag(tag.label) %>
+    <%= check_box_tag "search_tags[]", tag.label %>
+  <% end %>
+  <%= submit_tag("SEARCH", class: 'secondary button search-button') %>
 <% end %>

@@ -1,18 +1,8 @@
 Rails.application.routes.draw do
 
-  get 'tags/index'
+resources :tags
 
-  get 'tags/show'
-
-  get 'tags/new'
-
-  get 'tags/create'
-
-  get 'tags/edit'
-
-  get 'tags/update'
-
-  get 'tags/destroy'
+get 'tags/find_tag_outfits' => 'tags#find_tag_outfits', as: 'find_tag_outfits'
 
   get 'landings/index'
 

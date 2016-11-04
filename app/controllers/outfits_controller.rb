@@ -2,7 +2,17 @@ class OutfitsController < ApplicationController
   before_action :find_outfit, only: [:show, :edit, :update, :destroy]
 
   def index
-    @outfits = Outfit.all
+    ids = params[:outfits]
+    if ids != nil
+      outfits = []
+      ids.each do |id|
+        outfits << Outfit.find(id.to_i)
+      end
+      @outfits = outfits
+    else
+      @outfits = Outfit.all
+    end
+
     @casual = Outfit.where(category: 'casual')
     @business = Outfit.where(category: 'business')
     @night_out = Outfit.where(category: 'night_out')
