@@ -2,7 +2,6 @@ source 'https://rubygems.org'
 
 #paper clip and imagemagik
 gem 'paperclip', '~> 4.3', '>= 4.3.6'
-
 gem "awesome_print"
 
 # Amazon Web Services
