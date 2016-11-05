@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161104040207) do
+ActiveRecord::Schema.define(version: 20161105013028) do
 
   create_table "outfit_tags", force: :cascade do |t|
     t.integer  "tag_id"
@@ -35,6 +35,7 @@ ActiveRecord::Schema.define(version: 20161104040207) do
     t.string   "photo_content_type"
     t.integer  "photo_file_size"
     t.datetime "photo_updated_at"
+    t.integer  "user_id"
   end
 
   create_table "tags", force: :cascade do |t|
@@ -52,6 +53,10 @@ ActiveRecord::Schema.define(version: 20161104040207) do
     t.string   "url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "age_range"
+    t.string   "gender"
   end
 
 end

@@ -1,30 +1,74 @@
 class OutfitsController < ApplicationController
+  before_action :find_user
+  before_action :user_outfits
   before_action :find_outfit, only: [:show, :edit, :update, :destroy]
 
   def index
-    ids = params[:outfits]
-    if ids != nil
-      outfits = []
-      ids.each do |id|
-        outfits << Outfit.find(id.to_i)
+    @tags = params[:tags]
+    if @tags != nil
+      @outfits = []
+      @tags.each do |tag|
+        @user_outfits.each do |outfit|
+          @outfits << outfit if outfit.tags.include? tag
+        end
       end
-      @outfits = outfits
+      return @outfits
     else
-      @outfits = Outfit.all
+      @outfits = @user_outfits
     end
 
-    @casual = Outfit.where(category: 'casual')
-    @business = Outfit.where(category: 'business')
-    @night_out = Outfit.where(category: 'night_out')
-    @fancy = Outfit.where(category: 'fancy')
+    # ids = params[:outfits]
+    # if ids != nil
+    #   outfits = []
+    #   ids.each do |id|
+    #     outfits << Outfit.where(user_id: @user.id).find(id.to_i)
+    #   end
+    #   @outfits = outfits
+    # else
+    #   @outfits = Outfit.where(user_id: @user.id)
+    # end
+
+    # if @outfits != nil
+    #   @casual = []
+    #   @business = []
+    #   @night_out = []
+    #   @fancy = []
+    #   @outfits.each do |outfit|
+    #     @casual << outfit if outfit.category == 'casual'
+    #     @business << outfit if outfit.category == 'business'
+    #     @night_out << outfit if outfit.category == 'night_out'
+    #     @fancy << outfit if outfit.category == 'fancy'
+    #   end
+    #end
+
+    # .where(category: 'casual')
+    # @business = Outfit.where(user_id: @user.id).where(category: 'business')
+    # @night_out = Outfit.where(user_id: @user.id).where(category: 'night_out')
+    # @fancy = Outfit.where(user_id: @user.id).where(category: 'fancy')
   end
 
   def category
-    @outfits = Outfit.where(category: params[:category])
+    @category = params[:category]
+    @outfits = []
+    @user_outfits.each do |outfit|
+      @outfits << outfit if outfit.category == @category
+    end
+    return @outfits
   end
 
   def favorite
-    @outfits = Outfit.where(favorite: true)
+    @category = params[:category]
+    @outfits = []
+    if @category == nil
+      @user_outfits.each do |outfit|
+        @outfits << outfit if outfit.favorite == true
+      end
+    else
+      @user_outfits.each do |outfit|
+        @outfits << outfit if outfit.favorite == true && outfit.category == @category
+      end
+    end
+    return @outfits
   end
 
   def show
@@ -40,6 +84,7 @@ class OutfitsController < ApplicationController
 
   def create
     @outfit = Outfit.new(outfit_params)
+    @outfit.user_id = @user.id
     # @product.last
     if @outfit.save
       redirect_to outfits_path
@@ -65,7 +110,6 @@ class OutfitsController < ApplicationController
       @post_path = outfit_path(@outfit.id)
       render :edit
     end
-
   end
 
   def destroy
@@ -83,6 +127,22 @@ class OutfitsController < ApplicationController
   end
 
   def find_outfit
-    @outfit = Outfit.find(params[:id].to_i)
+    if Outfit.exists?(params[:id].to_i) == true && Outfit.find(params[:id].to_i).user == @user
+      return @outfit = Outfit.find(params[:id].to_i)
+    else
+      render :status => 404
+    end
+  end
+
+  def find_user  ##This may need to change - look at betsy
+    if User.exists?(session[:user_id].to_i) == true
+      return @user = User.find(session[:user_id].to_i)
+    else
+      render :status => 404
+    end
+  end
+
+  def user_outfits
+    return @user_outfits = Outfit.where(user_id: @user.id)
   end
 end

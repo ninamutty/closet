@@ -23,7 +23,7 @@ get 'tags/find_tag_outfits' => 'tags#find_tag_outfits', as: 'find_tag_outfits'
   get 'outfits/favorite/:favorite' => 'outfits#favorite', as: 'favorite'
 
   get '/auth/:provider/callback' => 'sessions#create'
-  delete '/logout', to: 'sessions#destroy'
+  delete '/logout', to: 'sessions#destroy', as: 'logout'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
