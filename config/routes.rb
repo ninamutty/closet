@@ -1,12 +1,13 @@
 Rails.application.routes.draw do
+  root to: 'landings#index'
 
   get 'sessions/create'
 
   get 'sessions/destroy'
 
-resources :tags
+  resources :tags
 
-get 'tags/find_tag_outfits' => 'tags#find_tag_outfits', as: 'find_tag_outfits'
+  get 'tags/find_tag_outfits' => 'tags#find_tag_outfits', as: 'find_tag_outfits'
 
   get 'landings/index'
 
@@ -14,11 +15,11 @@ get 'tags/find_tag_outfits' => 'tags#find_tag_outfits', as: 'find_tag_outfits'
 
   get 'landings/add_selection/:tag' => 'landings#add_selection', as: 'add_selection'
 
-  root to: 'landings#index'
-
   resources :outfits
 
   get 'outfits/category/:category' => 'outfits#category', as: 'category'
+
+  get 'outfits/category/:tags' => 'outfits#tags', as: 'outfit_tags'
 
   get 'outfits/favorite/:favorite' => 'outfits#favorite', as: 'favorite'
 
