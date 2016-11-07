@@ -16,60 +16,65 @@ class OutfitsController < ApplicationController
     else
       @outfits = @user_outfits
     end
-
-    # ids = params[:outfits]
-    # if ids != nil
-    #   outfits = []
-    #   ids.each do |id|
-    #     outfits << Outfit.where(user_id: @user.id).find(id.to_i)
-    #   end
-    #   @outfits = outfits
-    # else
-    #   @outfits = Outfit.where(user_id: @user.id)
-    # end
-
-    # if @outfits != nil
-    #   @casual = []
-    #   @business = []
-    #   @night_out = []
-    #   @fancy = []
-    #   @outfits.each do |outfit|
-    #     @casual << outfit if outfit.category == 'casual'
-    #     @business << outfit if outfit.category == 'business'
-    #     @night_out << outfit if outfit.category == 'night_out'
-    #     @fancy << outfit if outfit.category == 'fancy'
-    #   end
-    #end
-
-    # .where(category: 'casual')
-    # @business = Outfit.where(user_id: @user.id).where(category: 'business')
-    # @night_out = Outfit.where(user_id: @user.id).where(category: 'night_out')
-    # @fancy = Outfit.where(user_id: @user.id).where(category: 'fancy')
   end
+
 
   def category
+    tagged_outfits = params[:tagged_outfits]
     @category = params[:category]
     @outfits = []
-    @user_outfits.each do |outfit|
-      @outfits << outfit if outfit.category == @category
-    end
-    return @outfits
-  end
-
-  def favorite
-    @category = params[:category]
-    @outfits = []
-    if @category == nil
+    if tagged_outfits == nil
       @user_outfits.each do |outfit|
-        @outfits << outfit if outfit.favorite == true
+        @outfits << outfit if outfit.category == @category
       end
     else
       @user_outfits.each do |outfit|
-        @outfits << outfit if outfit.favorite == true && outfit.category == @category
+        if (outfit.category == @category) && (tagged_outfits.include? outfit.id.to_s)
+          @outfits << outfit
+        end
       end
     end
     return @outfits
   end
+
+  def favorite   ###not filtering category properly
+    category = params[:category]
+    tagged_outfits = params[:tagged_outfits]
+    @outfits = []
+    if category == nil && tagged_outfits == nil
+      @user_outfits.each do |outfit|
+        @outfits << outfit if outfit.favorite == true
+      end
+    elsif tagged_outfits != nil && tagged_outfits.length != 0 && category == nil
+      @user_outfits.each do |outfit|
+        if (outfit.favorite == true) && (tagged_outfits.include? outfit.id.to_s)
+          @outfits << outfit
+        end
+      end
+    else category != nil
+      @user_outfits.each do |outfit|
+        @outfits << outfit if outfit.favorite == true && outfit.category == category
+      end
+    end
+    return @outfits
+  end
+
+  def tags
+    @tags = params[:tags]
+    if @tags == nil or @tags.length == 0
+      redirect_to outfits_path
+    else
+      @outfits = []
+      @tags.each do |tag|
+        @user_outfits.each do |outfit|
+          @outfits << outfit if outfit.tags.include? tag
+        end
+      end
+    end
+    return @outfits
+  end
+
+
 
   def show
     @tags = @outfit.tags

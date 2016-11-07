@@ -1,0 +1,10 @@
+<h3> Categories </h3>
+  <p> <%= link_to "Casual", category_path(category: 'casual') %> </p>
+  <p> <%= link_to "Business", category_path(category: 'business') %> </p>
+  <p> <%= link_to "Night Out", category_path(category: 'night_out') %> </p>
+  <p> <%= link_to "Fancy", category_path(category: 'fancy') %> </p>
+
+<h3><%= link_to "Favorites", favorite_path(favorite: true, category: @category) %> </h3>
+
+
+<%= render partial: 'sectionindex' %>

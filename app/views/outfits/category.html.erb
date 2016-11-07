@@ -1,3 +1,11 @@
 <h3><%= link_to "Favorites", favorite_path(favorite: true, category: @category) %> </h3>
 
+<%#= form_tag(find_tag_outfits_path, method: :get) do %>
+  <%# @tags.each do |tag| %>
+    <%#= label_tag(tag.label) %>
+    <%#= check_box_tag "search_tags[]", tag.label %>
+  <%# end %>
+  <%#= submit_tag("SEARCH", class: 'secondary button search-button') %>
+<%# end %>
+
 <%= render partial: 'sectionindex' %>

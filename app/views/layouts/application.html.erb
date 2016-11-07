@@ -7,20 +7,22 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-
-  <div>
-    <% if current_user %>
-      Signed in as <strong><%= current_user.name %></strong>!
-      <%= link_to "Sign out", logout_path, id: "sign_out", method: :delete%>
-    <% else %>
-      <%= link_to "Sign in with Facebook", "/auth/facebook", id: "sign_in" %>
-    <% end %>
-  </div>
   <header>
+  <nav>
     <ul class="nav navbar-nav">
-      <li><div class="fb-login-button" data-max-rows="1" data-size="large" data-show-faces="false" data-auto-logout-link="true"></div> </li>
-     </ul>
+      <li> <%= link_to "Home", landings_index_path %></li>
+      <% if current_user %>
+        <li> Signed in as <strong><%= current_user.name %></strong>!  </li>
+        <%= link_to "Sign out", logout_path, id: "sign_out", method: :delete%>
+      <% else %>
+        <li><%= link_to "Sign in with Facebook", "/auth/facebook", id: "sign_in" %>  </li>
+      <% end %>
+    </ul>
+  </nav>
+
   </header>
+
+
 <%= yield %>
 
 </body>
