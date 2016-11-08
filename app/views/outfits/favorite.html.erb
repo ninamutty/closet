@@ -1,1 +1,22 @@
+<% if @category == nil %>
+<h3> Categories </h3>
+  <p> <%= link_to "Casual", category_path(category: 'casual', favorite: true) %> </p>
+  <p> <%= link_to "Business", category_path(category: 'business', favorite: true) %> </p>
+  <p> <%= link_to "Night Out", category_path(category: 'night_out', favorite: true) %> </p>
+  <p> <%= link_to "Fancy", category_path(category: 'fancy', favorite: true) %> </p>
+<% end %>
+
+<% if @tagged_outfits == nil %>
+  <%= form_tag(tags_path, method: :get) do %>
+    <% @tags.each do |tag| %>
+      <%= hidden_field_tag :favorite, true %>
+      <%= label_tag(tag.label) %>
+      <%= check_box_tag "search_tags[]", tag.label %>
+    <% end %>
+    <%= submit_tag("SEARCH", class: 'secondary button search-button') %>
+  <% end %>
+<% end %>
+
+
+
 <%= render partial: 'sectionindex' %>

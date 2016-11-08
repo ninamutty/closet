@@ -3,34 +3,50 @@ class TagsController < ApplicationController
   before_action :user_outfits
 
   def index
-    @tags = params[:tags]
-    if params["outfits"] == nil || params["outfits"].length == 0
-      flash[:notice] = "Could not find any outfits matching those specifications"
-      redirect_to outfits_path
+    @category = params["category"]
+    @tags = params["search_tags"]
+    @favorite = params["favorite"]
+
+    if @tags == nil
+      flash[:notice] = "Please select a filter to search outfits"
+      redirect_to landings_path
     else
-      outfit_numbers = params["outfits"]
-      @outfits = []
+      filtered_outfits = []
+      @user_outfits.each do |outfit|
+        if @category != nil
+          if outfit.category != @category then
+            next
+          end
+        end
 
-      freq_hash = outfit_numbers.inject(Hash.new(0)) { |h,v| h[v] += 1; h }
-      frequency = freq_hash.values.max
-      unique_outfit_numbers =  outfit_numbers.select{|element| outfit_numbers.count(element) >= frequency }.uniq
+################ THIS NEEDS REWORKING TO ACCOUNT FOR FAVORITES ##########
 
-      unique_outfit_numbers.each do |number|
-        unless @outfits.include? Outfit.find(number.to_i) && Outfit.find(number.to_i).user_id == @user.id
-          @outfits << Outfit.find(number.to_i)
+        labels = []
+        tags = outfit.tags
+        tags.each do |tag|
+          labels << tag.label
+        end
+        if (@tags-labels).empty? == true
+          filtered_outfits << outfit
         end
       end
+
+      @outfits = filtered_outfits
     end
     return @outfits
   end
 
+
+
+
   def find_tag_outfits
+    category = params[:category]
     params_tags = params["search_tags"]
     @tags = []
     params_tags.each do |label|
       @tags << Tag.where(label: label)
     end
-    redirect_to tags_path(@tags)
+    redirect_to tags_path(@tags, category: category)
   end
 
   def show

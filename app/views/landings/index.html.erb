@@ -9,7 +9,7 @@
 
 <h3><%= link_to "Favorites", favorite_path(favorite: true) %> </h3>
 
-<%= form_tag(find_tag_outfits_path, method: :get) do %>
+<%= form_tag(tags_path, method: :get) do %>
   <% @tags.each do |tag| %>
     <%= label_tag(tag.label) %>
     <%= check_box_tag "search_tags[]", tag.label %>

@@ -1,6 +1,7 @@
 class OutfitsController < ApplicationController
   before_action :find_user
   before_action :user_outfits
+  before_action :all_tags
   before_action :find_outfit, only: [:show, :edit, :update, :destroy]
 
   def index
@@ -20,16 +21,28 @@ class OutfitsController < ApplicationController
 
 
   def category
-    tagged_outfits = params[:tagged_outfits]
+    @favorite = params[:favorite]
+    @tagged_outfits = params[:tagged_outfits]
     @category = params[:category]
     @outfits = []
-    if tagged_outfits == nil
+
+    if (@tagged_outfits == nil) && (@favorite == nil)
       @user_outfits.each do |outfit|
         @outfits << outfit if outfit.category == @category
       end
+    elsif (@favorite == "true") && (@tagged_outfits == nil)
+      @user_outfits.each do |outfit|
+        @outfits << outfit if (outfit.category == @category && outfit.favorite == true)
+      end
+    elsif (@favorite == nil) && (@tagged_outfits != nil)
+      @user_outfits.each do |outfit|
+        if (outfit.category == @category) && (@tagged_outfits.include? outfit.id.to_s)
+          @outfits << outfit
+        end
+      end
     else
       @user_outfits.each do |outfit|
-        if (outfit.category == @category) && (tagged_outfits.include? outfit.id.to_s)
+        if (outfit.category == @category) && (@tagged_outfits.include? outfit.id.to_s) && (outfit.favorite == true)
           @outfits << outfit
         end
       end
@@ -38,26 +51,35 @@ class OutfitsController < ApplicationController
   end
 
   def favorite   ###not filtering category properly
-    category = params[:category]
-    tagged_outfits = params[:tagged_outfits]
+    @category = params[:category]
+    @tagged_outfits = params[:tagged_outfits]
     @outfits = []
-    if category == nil && tagged_outfits == nil
+
+    if @category == nil && @tagged_outfits == nil
       @user_outfits.each do |outfit|
         @outfits << outfit if outfit.favorite == true
       end
-    elsif tagged_outfits != nil && tagged_outfits.length != 0 && category == nil
+    elsif @tagged_outfits != nil && @tagged_outfits.length != 0 && @category == nil
       @user_outfits.each do |outfit|
-        if (outfit.favorite == true) && (tagged_outfits.include? outfit.id.to_s)
+        if (outfit.favorite == true) && (@tagged_outfits.include? outfit.id.to_s)
           @outfits << outfit
         end
       end
-    else category != nil
+    elsif @tagged_outfits == nil && @category != nil
       @user_outfits.each do |outfit|
-        @outfits << outfit if outfit.favorite == true && outfit.category == category
+        @outfits << outfit if (outfit.favorite == true && outfit.category == @category)
+      end
+    else
+      @user_outfits.each do |outfit|
+        if (outfit.category == @category) && (@tagged_outfits.include? outfit.id.to_s) && (outfit.favorite == true)
+          @outfits << outfit
+        end
       end
     end
     return @outfits
   end
+
+
 
   def tags
     @tags = params[:tags]
@@ -125,6 +147,8 @@ class OutfitsController < ApplicationController
     end
   end
 
+
+
   private
 
   def outfit_params
@@ -149,5 +173,9 @@ class OutfitsController < ApplicationController
 
   def user_outfits
     return @user_outfits = Outfit.where(user_id: @user.id)
+  end
+
+  def all_tags
+    return @tags = Tag.all
   end
 end

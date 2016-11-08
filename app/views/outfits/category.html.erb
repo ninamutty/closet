@@ -1,11 +1,16 @@
-<h3><%= link_to "Favorites", favorite_path(favorite: true, category: @category) %> </h3>
+<% if @favorite == nil %>
+  <h3><%= link_to "Favorites", favorite_path(favorite: true, category: @category) %> </h3>
+<% end %>
 
-<%#= form_tag(find_tag_outfits_path, method: :get) do %>
-  <%# @tags.each do |tag| %>
-    <%#= label_tag(tag.label) %>
-    <%#= check_box_tag "search_tags[]", tag.label %>
-  <%# end %>
-  <%#= submit_tag("SEARCH", class: 'secondary button search-button') %>
-<%# end %>
+<% if @tagged_outfits == nil %>
+  <%= form_tag(tags_path, method: :get) do %>
+    <% @tags.each do |tag| %>
+      <%= hidden_field_tag :category, @category %>
+      <%= label_tag(tag.label) %>
+      <%= check_box_tag "search_tags[]", tag.label %>
+    <% end %>
+    <%= submit_tag("SEARCH", class: 'secondary button search-button') %>
+  <% end %>
+<% end %>
 
 <%= render partial: 'sectionindex' %>

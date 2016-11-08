@@ -1,10 +1,13 @@
+<% if @category == nil %>
 <h3> Categories </h3>
-  <p> <%= link_to "Casual", category_path(category: 'casual',  tagged_outfits: @outfits) %> </p>
-  <p> <%= link_to "Business", category_path(category: 'business',  tagged_outfits: @outfits) %> </p>
-  <p> <%= link_to "Night Out", category_path(category: 'night_out',  tagged_outfits: @outfits) %> </p>
-  <p> <%= link_to "Fancy", category_path(category: 'fancy',  tagged_outfits: @outfits) %> </p>
+  <p> <%= link_to "Casual", category_path(category: 'casual',  tagged_outfits: @outfits, favorite: @favorite) %> </p>
+  <p> <%= link_to "Business", category_path(category: 'business',  tagged_outfits: @outfits, favorite: @favorite) %> </p>
+  <p> <%= link_to "Night Out", category_path(category: 'night_out',  tagged_outfits: @outfits, favorite: @favorite) %> </p>
+  <p> <%= link_to "Fancy", category_path(category: 'fancy',  tagged_outfits: @outfits, favorite: @favorite) %> </p>
+<% end %>
 
-<h3><%= link_to "Favorites", favorite_path(favorite: true, tagged_outfits: @outfits) %> </h3>
-
+<% if @favorite == nil %>
+  <h3><%= link_to "Favorites", favorite_path(favorite: true, tagged_outfits: @outfits, category: @category) %> </h3>
+<% end %>
 
 <%= render partial: '/outfits/sectionindex' %>
