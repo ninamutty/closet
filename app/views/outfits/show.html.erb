@@ -25,7 +25,7 @@
   <%= @outfit.favorite %>
 </p>
 
-<%= image_tag(@outfit.photo.url(:medium), alt: "photo of #{@outfit.name}") %>
+<%= image_tag(@outfit.photo.url(:large), alt: "photo of #{@outfit.name}") %>
 
 <% unless @tags.length == 0 %>
   <p>
