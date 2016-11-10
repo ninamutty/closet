@@ -5,6 +5,7 @@ class OutfitsController < ApplicationController
   before_action :find_outfit, only: [:show, :edit, :update, :destroy]
 
   def index
+    @user = find_user
     @tags = params[:tags]
     if @tags != nil
       @outfits = []

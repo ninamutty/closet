@@ -1,16 +1,21 @@
-<% if @favorite == nil %>
-  <h3><%= link_to "Favorites", favorite_path(favorite: true, category: @category) %> </h3>
-<% end %>
-
-<% if @tagged_outfits == nil %>
-  <%= form_tag(tags_path, method: :get) do %>
-    <% @tags.each do |tag| %>
-      <%= hidden_field_tag :category, @category %>
-      <%= label_tag(tag.label) %>
-      <%= check_box_tag "search_tags[]", tag.label %>
+<% unless @user_outfits == nil %>
+  <% if @favorite == nil || @favorite == '' %>
+    <h3><%= link_to "Favorites", favorite_path(favorite: true, category: @category, tagged_outfits: @tagged_outfits) %> </h3>
     <% end %>
-    <%= submit_tag("SEARCH", class: 'secondary button search-button') %>
-  <% end %>
-<% end %>
 
-<%= render partial: 'sectionindex' %>
+    <% if @tagged_outfits == nil %>
+    <%= form_tag(tags_path, method: :get) do %>
+      <% @tags.each do |tag| %>
+        <%= hidden_field_tag :category, @category %>
+        <%= hidden_field_tag :favorite, @favorite %>
+        <%= label_tag(tag.label) %>
+        <%= check_box_tag "search_tags[]", tag.label %>
+      <% end %>
+      <%= submit_tag("SEARCH", class: 'secondary button search-button') %>
+    <% end %>
+  <% end %>
+
+  <%= render partial: 'sectionindex' %>
+<% else %>
+  <h3> Please <%= link_to 'Sign In', "/auth/facebook", id: "sign_in" %> to Begin </h3>
+<% end %>

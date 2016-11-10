@@ -6,21 +6,25 @@ class TagsController < ApplicationController
     @category = params["category"]
     @tags = params["search_tags"]
     @favorite = params["favorite"]
+    @outfits = []
 
     if @tags == nil
       flash[:notice] = "Please select a filter to search outfits"
-      redirect_to landings_path
+      redirect_to :back
     else
       filtered_outfits = []
       @user_outfits.each do |outfit|
-        if @category != nil
+        if @category != nil && @category != ""
           if outfit.category != @category then
             next
           end
         end
-
-################ THIS NEEDS REWORKING TO ACCOUNT FOR FAVORITES ##########
-
+        if @favorite != nil && @favorite != ""
+          if outfit.favorite != true then
+            next
+          end
+        end
+  # raise
         labels = []
         tags = outfit.tags
         tags.each do |tag|
