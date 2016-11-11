@@ -32,10 +32,17 @@
     <%= f.check_box :favorite %>
   </div>
 
-  <div class="field">
-    <%= f.label :photo %><br>
-    <%= f.file_field :photo %>
-  </div>
+  <!-- <div class="field">
+    <%# f.label :photo %><br>
+    <%# f.file_field :photo %>
+  </div> -->
+  <%= f.fields_for :photos do |photos_form| %>
+       <%= photos_form.label :image %>
+       <%= photos_form.file_field :image %>
+   <% end %>
+
+
+
 
   <div class="field">
     <%= f.label :tags %>

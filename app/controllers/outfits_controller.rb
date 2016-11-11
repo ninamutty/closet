@@ -105,6 +105,8 @@ class OutfitsController < ApplicationController
 
   def new
     @outfit = Outfit.new
+     3.times { @outfit.photos.build}
+
     @post_method = :post
     @post_path = outfits_path
     @tag = Tag.order("label ASC")
@@ -153,7 +155,7 @@ class OutfitsController < ApplicationController
   private
 
   def outfit_params
-    params.require(:outfit).permit(:name, :last_worn, :category, :reworn_count, :favorite, :photo, tag_ids: [])
+    params.require(:outfit).permit(:name, :last_worn, :category, :reworn_count, :favorite, :photo, tag_ids: [], photos_attributes: [:id, :image])
   end
 
   def find_outfit

@@ -25,7 +25,24 @@
   <%= @outfit.favorite %>
 </p>
 
-<%= image_tag(@outfit.photo.url(:large), alt: "photo of #{@outfit.name}") %>
+<%# image_tag(@outfit.photo.url(:large), alt: "photo of #{@outfit.name}") %>
+
+<% if @outfit.photos != [] && @outfit.photos.length != 0 %>
+  <% @outfit.photos.each do |photo| %>
+    <%= image_tag(photo.image.url(:large), alt: "photo of #{@outfit.name}") %>
+  <% end %>
+
+<% elsif @outfit.photo.url !=  "/photos/original/missing.png" %>
+  <td><%= link_to(image_tag(@outfit.photo.url(:large), alt: "photo of #{@outfit.name}"), outfit_path(id: @outfit.id)) %></td>
+
+<% else %>
+  <td>No Photo</td>
+<% end %>
+
+
+
+
+
 
 <% unless @tags.length == 0 %>
   <p>

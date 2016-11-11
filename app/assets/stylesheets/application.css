@@ -15,3 +15,9 @@
  *= require foundation_and_overrides
 
  */
+
+
+ label {
+     display: inline-block;
+     margin-left: 1%;
+   }
