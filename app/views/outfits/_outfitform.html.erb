@@ -17,7 +17,7 @@
   </div>
   <div class="field">
     <%= f.label :last_worn %><br>
-    <%= f.date_select :last_worn %>
+    <%= f.date_select :last_worn ,  selected: Date.today, prompt: { day: 'Day', month: 'Month', year: 'Year' }%>
   </div>
   <div class="field">
     <%= f.label :category %><br>

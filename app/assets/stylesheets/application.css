@@ -15,7 +15,44 @@
  *= require foundation_and_overrides
 
  */
+header {
+  border-bottom: 0.75px solid black;
+  margin: 2.5% 0;
+}
 
+header h1.main-header {
+  font-family: 'Kaushan Script', 'sans-serif';
+  font-size: 3rem;
+  margin-left: 5%;
+  text-align: center;
+  display: inline-block;
+}
+
+header nav {
+  display: inline-block;
+  margin-left: 15%;
+}
+
+header nav ul.menu {
+  list-style: none;
+  text-align: center;
+  margin-left: auto;
+}
+
+header nav ul.menu li {
+  font-family: 'Open Sans', 'sans-serif';
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  display: inline-block;
+  margin: auto;
+  text-align: center;
+}
+
+header nav ul li a {
+  color: black;
+  margin: auto;
+  text-align: center;
+ }
 
  label {
      display: inline-block;

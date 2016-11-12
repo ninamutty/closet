@@ -4,8 +4,8 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title><%= content_for?(:title) ? yield(:title) : "Untitled" %></title>
-
+    <title><%= content_for?(:title) ? yield(:title) : "Closet" %></title>
+    <link href="https://fonts.googleapis.com/css?family=Courgette|Julius+Sans+One|Kaushan+Script|Open+Sans|Open+Sans+Condensed:300|Ranga" rel="stylesheet">
     <%= stylesheet_link_tag    "application" %>
     <%= javascript_include_tag "application", 'data-turbolinks-track' => true %>
     <%= csrf_meta_tags %>
@@ -13,13 +13,13 @@
 
   <body>
     <header>
-    <h1> Closet </h1>
+    <h1 class="main-header"> Closet </h1>
     <nav>
-      <ul class="nav navbar-nav">
-        <li> <%= link_to "Home", landings_index_path %></li>
+      <ul class="nav navbar-nav menu">
+        <li> <%= link_to "Home", root_path %></li>
         <% if current_user %>
-          <li> Signed in as <strong><%= current_user.name %></strong>!  </li>
-          <%= link_to "Sign out", logout_path, id: "sign_out", method: :delete%>
+          <!-- <li> <%# current_user.name %> </li> -->
+          <li><%= link_to "Sign out", logout_path, id: "sign_out", method: :delete%></li>
         <% else %>
           <li><%= link_to "Sign in with Facebook", "/auth/facebook", id: "sign_in" %>  </li>
         <% end %>
