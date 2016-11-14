@@ -15,17 +15,35 @@
  *= require foundation_and_overrides
 
  */
-header {
+/*header {
   border-bottom: 0.75px solid black;
-  margin: 2.5% 0;
+}*/
+
+header {
+  width: 100%;
 }
 
-header h1.main-header {
+div.top-title {
+  display: block;
+  border-bottom: 0.75px solid black;
+  padding: 0.7% 0;
+}
+
+h1.main-header {
   font-family: 'Kaushan Script', 'sans-serif';
-  font-size: 3rem;
-  margin-left: 5%;
+  font-size: 1.8rem;
   text-align: center;
   display: inline-block;
+}
+h1.main-header a {
+  color: black;
+}
+
+div.navigation-logo {
+  display: inline-block;
+  width: 50px;
+  height: auto;
+  margin-top: 2%;
 }
 
 header nav {
@@ -54,7 +72,37 @@ header nav ul li a {
   text-align: center;
  }
 
- label {
-     display: inline-block;
-     margin-left: 1%;
-   }
+.landing-search-class a {
+  font-size: 1.9rem;
+  border-top: 0.5px solid lightgray;
+  margin: 3% 0;
+}
+
+.landing-main-body {
+  margin: 10% auto 0 auto;
+  width: 80%;
+}
+
+.landing-search-class a h3 {
+  font-size: 1.9rem;
+}
+
+.landing-drop-down p a {
+  font-size: 1.4rem;
+  margin-left: 5%;
+}
+
+.landing-drop-down label {
+  font-size: 1.2rem;
+  margin-left: 5%;
+}
+
+li.home-page-search input.search-button {
+  margin-top: 3%;
+  margin-left: 73%;
+}
+
+label {
+  display: inline-block;
+  margin-left: 1%;
+}

@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   root to: 'landings#index'
 
   get 'sessions/create'
@@ -7,6 +8,10 @@ Rails.application.routes.draw do
 
   resources :tags
 
+  resources :users
+
+  resources :outfits
+
   get 'tags/find_tag_outfits' => 'tags#find_tag_outfits', as: 'find_tag_outfits'
 
   get 'landings/index'
@@ -14,8 +19,6 @@ Rails.application.routes.draw do
   get 'landings/show'
 
   get 'landings/add_selection/:tag' => 'landings#add_selection', as: 'add_selection'
-
-  resources :outfits
 
   get 'outfits/category/:category' => 'outfits#category', as: 'category'
 

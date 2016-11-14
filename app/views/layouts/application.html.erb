@@ -9,11 +9,34 @@
     <%= stylesheet_link_tag    "application" %>
     <%= javascript_include_tag "application", 'data-turbolinks-track' => true %>
     <%= csrf_meta_tags %>
+    <script src="js/vendor/jquery.js"></script>
+    <script src="js/foundation/foundation.js"></script>
+    <script src="js/foundation/foundation.dropdown.js"></script>
   </head>
 
   <body>
     <header>
-    <h1 class="main-header"> Closet </h1>
+    <div class="top-title row">
+      <div class="navigation-logo columns small-1">
+        <%= link_to(image_tag('add.png', alt: 'new outfit', size: '25x25'), new_outfit_path) %>
+      </div>
+      <h1 class="main-header columns small-9"> <%= link_to "Closet", root_path %> </h1>
+      <div class="navigation-logo columns small-1">
+        <%# link_to(image_tag('user.png', alt: 'user profile',  size: '25x25'), root_path) %>
+<!-- <a data-dropdown="drop1" aria-controls="drop1" aria-expanded="false">Has Dropdown</a> -->
+        <a href="#" data-options="align:left" data-dropdown="drop" class="vertical menu"> <%= image_tag('user.png', alt: 'user profile',  size: '25x25') %></a>
+        <ul id="drop" class="f-dropdown" data-dropdown aria-hidden="true" tabindex="-1">
+          <% if current_user %>
+            <li> <p> <%= link_to 'Profile', user_path(current_user) %>    </p>  </li>
+            <li><p><%= link_to "Sign out", logout_path, id: "sign_out", method: :delete%>   </p></li>
+          <% else %>
+            <li><p><%= link_to "Sign in with Facebook", "/auth/facebook", id: "sign_in" %>   </p> </li>
+          <% end %>
+        </ul>
+
+      </div>
+    </div>
+    <!-- <h1 class="main-header"> Closet </h1> -->
     <nav>
       <ul class="nav navbar-nav menu">
         <li> <%= link_to "Home", root_path %></li>
@@ -28,6 +51,15 @@
 
     </header>
     <%= yield %>
+
+    <script>
+    $(document).foundation({
+      dropdown: {
+        // specify the class used for active dropdowns
+        active_class: 'open'
+      }
+    });
+    </script>
 
   </body>
 </html>

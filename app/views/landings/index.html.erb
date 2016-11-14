@@ -1,36 +1,59 @@
+<div class="landing-main-body">
 <% if current_user %>
-  <ul class="vertical menu" data-accordion-menu>
+<body>
+<!-- <div class="off-canvas-wrapper" data-off-canvas>
+  <div class="off-canvas-wrapper-inner" data-off-canvas-wrapper>
+    <div class="off-canvas position-left" id="offCanvasLeft" data-off-canvas> -->
+    <!-- <button class="close-button" aria-label="Close menu" type="button" data-close>
+      <span aria-hidden="true">&times;</span>
+    </button> -->
+  <ul class="vertical menu landing-page" data-accordion-menu>
     <li class="landing-search-class">
       <%= link_to "All Outfits", outfits_path %>
     </li>
+
     <li class="landing-search-class">
       <a href="#"> <h3> Categories </h3> </a>
       <ul class="menu vertical nested">
-        <li><p> <%= link_to "Casual", category_path(category: 'casual') %> </p></li>
-        <li><p> <%= link_to "Business", category_path(category: 'business') %> </p></li>
-        <li><p> <%= link_to "Night Out", category_path(category: 'night_out') %> </p></li>
-        <li><p> <%= link_to "Fancy", category_path(category: 'fancy') %> </p></li>
+        <li class="landing-drop-down"><p> <%= link_to "Casual", category_path(category: 'casual') %> </p></li>
+        <li class="landing-drop-down"><p> <%= link_to "Business", category_path(category: 'business') %> </p></li>
+        <li class="landing-drop-down"><p> <%= link_to "Night Out", category_path(category: 'night_out') %> </p></li>
+        <li class="landing-drop-down"><p> <%= link_to "Fancy", category_path(category: 'fancy') %> </p></li>
       </ul>
     </li>
+
     <li class="landing-search-class">
       <%= link_to "Favorites", favorite_path(favorite: true) %>
     </li>
+
     <li class="landing-search-class">
       <a href="#"> <h3> Filter By Tags </h3> </a>
-      <ul class="menu vertical nested">
+      <ul class="menu vertical nested row">
 
     <%= form_tag(tags_path, method: :get) do %>
       <% @tags.each do |tag| %>
-        <li>
+        <li class="landing-drop-down columns small-6 medium-4 large-2">
           <%= label_tag(tag.label) %>
           <%= check_box_tag "search_tags[]", tag.label %>
         </li>
       <% end %>
-      <li>
+      <li class="home-page-search">
       <%= submit_tag("SEARCH", class: 'secondary button search-button') %>
       </li>
+    </ul>
     <% end %>
     </li>
+
+    <!-- <div class="off-canvas-content" data-off-canvas-content>
+      <%= "HI" %>
+    </div> -->
+  <!-- </div>
+</div>
+</div> -->
+
 <% else %>
   <h3> Please <%= link_to 'Sign In', "/auth/facebook", id: "sign_in" %> to Begin </h3>
 <% end %>
+
+</div>
+</body>
