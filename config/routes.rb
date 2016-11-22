@@ -12,6 +12,10 @@ Rails.application.routes.draw do
 
   resources :outfits
 
+  patch 'outfits/:id/reworn' => 'outfits#reworn', as: 'reworn'
+  patch 'outfits/:id/favorite_status' => 'outfits#favorite_status', as: 'favorite_status'
+
+
   get 'tags/find_tag_outfits' => 'tags#find_tag_outfits', as: 'find_tag_outfits'
 
   get 'landings/index'

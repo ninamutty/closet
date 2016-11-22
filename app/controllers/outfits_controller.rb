@@ -2,7 +2,7 @@ class OutfitsController < ApplicationController
   before_action :find_user
   before_action :user_outfits
   before_action :all_tags
-  before_action :find_outfit, only: [:show, :edit, :update, :destroy]
+  before_action :find_outfit, only: [:show, :edit, :update, :destroy, :reworn, :favorite_status]
 
   def index
     @user = find_user
@@ -16,6 +16,7 @@ class OutfitsController < ApplicationController
       end
       return @outfits
     else
+      @tags = Tag.all
       @outfits = @user_outfits
     end
   end
@@ -140,6 +141,27 @@ class OutfitsController < ApplicationController
       @post_path = outfit_path(@outfit.id)
       render :edit
     end
+  end
+
+  def favorite_status
+    if @outfit.favorite == false
+      @outfit.favorite = true
+    else @outfit.favorite == true
+      @outfit.favorite = false
+    end
+    if !@outfit.save
+      flash[:notice] = "Couldn't update favorite status"
+    end
+    redirect_to :back
+  end
+
+  def reworn
+    @outfit.reworn_count += 1
+    @outfit.last_worn = Date.today
+    if !@outfit.save
+      flash[:notice] = "Couldn't update reworn count"
+    end
+    redirect_to :back
   end
 
   def destroy

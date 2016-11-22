@@ -3,42 +3,34 @@
 <% if @outfits == nil || @outfits.length == 0 %>
   <p>  You don't have any outfits yet! Please add one to begin!</p>
 <% else %>
-  <table>
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Photos</th>
-        <!-- <th>Category</th>
-        <th>Reworn count</th> -->
-        <th>Favorite</th>
-        <th colspan="3"></th>
-      </tr>
-    </thead>
+  <div class="index-body row" data-equalizer>
+    <% @outfits.each do |outfit| %>
+      <article class="main-content-article panel callout columns small-12 medium-4 large-3 <%= "end" if outfit == @outfits.last %>" data-equalizer-watch>
+        <h3><%= link_to(outfit.name, outfit_path(id: outfit.id.to_i))%></h3>
 
-    <tbody>
-      <% @outfits.each do |outfit| %>
-        <tr>
-          <td><%= link_to(outfit.name, outfit_path(id: outfit.id.to_i))%></td>
-          <% photo = outfit.photo %>
-          <%# raise %>
-          <% if outfit.photos != [] && outfit.photos.length != 0 %>
-            <td><%= link_to(image_tag(outfit.photos.first.image.url(:medium), alt: "photo of #{outfit.name}"), outfit_path(id: outfit.id)) %></td>
-          <% elsif photo.url !=  "/photos/original/missing.png" %>
-            <td><%= link_to(image_tag(outfit.photo.url(:medium), alt: "photo of #{outfit.name}"), outfit_path(id: outfit.id)) %></td>
-          <% else %>
-            <td>No Photo</td>
-          <% end %>
-          <!-- <td><%= outfit.category %></td>
-          <td><%= outfit.reworn_count %></td> -->
-          <td><%= outfit.favorite ? "yes" : "no" %></td>
-          <td><%= link_to 'Show', outfit_path(id: outfit.id) %></td>
-          <td><%= link_to 'Edit', edit_outfit_path(id: outfit.id) %></td>
-          <td><%= link_to 'Destroy', outfit, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
-  <br>
+        <% photo = outfit.photo %>
+        <% if outfit.photos != [] && outfit.photos.length != 0 %>
+          <%= link_to(image_tag(outfit.photos.first.image.url(:medium), alt: "photo of #{outfit.name}"), outfit_path(id: outfit.id)) %>
+        <% elsif photo.url !=  "/photos/original/missing.png" %>
+          <%= link_to(image_tag(outfit.photo.url(:medium), alt: "photo of #{outfit.name}"), outfit_path(id: outfit.id)) %>
+        <% else %>
+          <p>  No Photo  </p>
+        <% end %>
+
+        <div class="underphoto">
+          <%= link_to((outfit.favorite ? image_tag('favorite-heart-button.png', alt: 'favorite outfit', size: '20x20') : image_tag('heart.png', alt: 'not a favorite outfit', size: '20x20')), favorite_status_path(id: outfit.id), method: :patch) %>
+
+          <%= outfit.category %>
+
+          <%= outfit.reworn_count %>
+          <%= link_to(image_tag('circular-arrrow.png', alt: 'reword outfit', size: '20x20'), reworn_path(id: outfit.id), method: :patch) %>
+        </div>
+
+        <p><%# link_to 'Edit', edit_outfit_path(id: outfit.id) %></p>
+        <p><%# link_to 'Destroy', outfit, method: :delete, data: { confirm: 'Are you sure?' } %></p>
+      </article>
+    <% end %>
+  </div>
 <% end %>
 
 <%= link_to 'New Outfit', new_outfit_path %>

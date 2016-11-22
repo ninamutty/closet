@@ -10,5 +10,22 @@
 
 <h3><%= link_to "Favorites", favorite_path(favorite: true) %> </h3>
 
+<li> <a href="#"> Filter By Tags </a> </li>
+<ul class="menu">
+<% if @tagged_outfits == nil %>
+<%= form_tag(tags_path, method: :get) do %>
+  <% @tags.each do |tag| %>
+    <%= hidden_field_tag :category, @category %>
+    <%= hidden_field_tag :favorite, @favorite %>
+  <li><a>
+    <%= label_tag(tag.label) %>
+    <%= check_box_tag "search_tags[]", tag.label %>
+  </a></li>
+  <% end %>
+  <%= submit_tag("SEARCH", class: 'secondary button search-button') %>
+<% end %>
+</ul>
+</ul>
+<% end %>
 
 <%= render partial: 'sectionindex' %>

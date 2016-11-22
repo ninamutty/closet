@@ -1,20 +1,14 @@
 <div class="landing-main-body">
 <% if current_user %>
 <body>
-<!-- <div class="off-canvas-wrapper" data-off-canvas>
-  <div class="off-canvas-wrapper-inner" data-off-canvas-wrapper>
-    <div class="off-canvas position-left" id="offCanvasLeft" data-off-canvas> -->
-    <!-- <button class="close-button" aria-label="Close menu" type="button" data-close>
-      <span aria-hidden="true">&times;</span>
-    </button> -->
-  <ul class="vertical menu landing-page" data-accordion-menu>
+  <ul class="vertical menu landing-page" data-drilldown>
     <li class="landing-search-class">
       <%= link_to "All Outfits", outfits_path %>
     </li>
 
     <li class="landing-search-class">
       <a href="#"> <h3> Categories </h3> </a>
-      <ul class="menu vertical nested">
+      <ul class="vertical menu nested has-dropdown">
         <li class="landing-drop-down"><p> <%= link_to "Casual", category_path(category: 'casual') %> </p></li>
         <li class="landing-drop-down"><p> <%= link_to "Business", category_path(category: 'business') %> </p></li>
         <li class="landing-drop-down"><p> <%= link_to "Night Out", category_path(category: 'night_out') %> </p></li>

@@ -23,7 +23,59 @@ header {
   width: 100%;
 }
 
-div.top-title {
+h1, ul, li, section {
+  display: inline-block;
+}
+
+img.icon-nav {
+  display: inline-block;
+}
+
+
+nav.top-bar {
+  background-color: white;
+  border-bottom: 1px solid black;
+}
+section, ul, li, a {
+  background-color: white;
+  display: inline-block;
+}
+
+.top-bar, .top-bar ul {
+  background-color: white;
+  margin: 0;
+}
+
+a {
+  color: black;
+}
+
+section.top-bar-section {
+  width: 100%;
+}
+
+div#responsive-menu {
+  display: inline-block;
+}
+
+.top-bar-title {
+  text-align: center;
+}
+
+.profile-logo a img {
+  width: 25px;
+  height: 25px;
+}
+
+.menu > li.profile-logo > a {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+header {
+  padding-top: 3%;
+}
+
+/*div.top-title {
   display: block;
   border-bottom: 0.75px solid black;
   padding: 0.7% 0;
@@ -70,7 +122,7 @@ header nav ul li a {
   color: black;
   margin: auto;
   text-align: center;
- }
+ }*/
 
 .landing-search-class a {
   font-size: 1.9rem;
@@ -105,4 +157,10 @@ li.home-page-search input.search-button {
 label {
   display: inline-block;
   margin-left: 1%;
+}
+
+
+
+article.main-content-article {
+  text-align: center;
 }
