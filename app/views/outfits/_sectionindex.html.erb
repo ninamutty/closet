@@ -1,30 +1,36 @@
-<h1>Listing Outfits</h1>
+<!-- <h1>Listing Outfits</h1> -->
 
 <% if @outfits == nil || @outfits.length == 0 %>
   <p>  You don't have any outfits yet! Please add one to begin!</p>
 <% else %>
   <div class="index-body row" data-equalizer>
     <% @outfits.each do |outfit| %>
-      <article class="main-content-article panel callout columns small-12 medium-4 large-3 <%= "end" if outfit == @outfits.last %>" data-equalizer-watch>
-        <h3><%= link_to(outfit.name, outfit_path(id: outfit.id.to_i))%></h3>
+      <article class="main-content-article panel columns small-12 medium-4 <%= "end" if outfit == @outfits.last %>" data-equalizer-watch>
+        <h2 class="outfit-name"><%= link_to(outfit.name, outfit_path(id: outfit.id.to_i))%></h2>
 
+        <div class="index-photo">
         <% photo = outfit.photo %>
         <% if outfit.photos != [] && outfit.photos.length != 0 %>
-          <%= link_to(image_tag(outfit.photos.first.image.url(:medium), alt: "photo of #{outfit.name}"), outfit_path(id: outfit.id)) %>
+          <%= link_to(image_tag(outfit.photos.first.image.url(:large), alt: "photo of #{outfit.name}"), outfit_path(id: outfit.id)) %>
         <% elsif photo.url !=  "/photos/original/missing.png" %>
-          <%= link_to(image_tag(outfit.photo.url(:medium), alt: "photo of #{outfit.name}"), outfit_path(id: outfit.id)) %>
+          <%= link_to(image_tag(outfit.photo.url(:large), alt: "photo of #{outfit.name}"), outfit_path(id: outfit.id)) %>
         <% else %>
           <p>  No Photo  </p>
         <% end %>
-
-        <div class="underphoto">
-          <%= link_to((outfit.favorite ? image_tag('favorite-heart-button.png', alt: 'favorite outfit', size: '20x20') : image_tag('heart.png', alt: 'not a favorite outfit', size: '20x20')), favorite_status_path(id: outfit.id), method: :patch) %>
-
-          <%= outfit.category %>
-
-          <%= outfit.reworn_count %>
-          <%= link_to(image_tag('circular-arrrow.png', alt: 'reword outfit', size: '20x20'), reworn_path(id: outfit.id), method: :patch) %>
         </div>
+
+        <div class="underphoto row">
+          <div class="columns small-2 medium-6">
+            <%= link_to((outfit.favorite ? image_tag('favorite-heart-button.png', alt: 'favorite outfit', size: '20x20') : image_tag('heart.png', alt: 'not a favorite outfit', size: '20x20')), favorite_status_path(id: outfit.id), method: :patch) %>
+          </div>
+
+          <div class="columns small-2 medium-6">
+            <%= link_to(image_tag('circular-arrrow.png', alt: 'reword outfit', size: '20x20'), reworn_path(id: outfit.id), method: :patch) %>
+          </div>
+        </div>
+
+          <p class="index-photo-information"><span>Reworn: </span><%= (outfit.reworn_count) %></p>
+          <p class="index-photo-information"><span>Last Worn: </span> <%= outfit.last_worn.to_formatted_s(:long) %>  </p>
 
         <p><%# link_to 'Edit', edit_outfit_path(id: outfit.id) %></p>
         <p><%# link_to 'Destroy', outfit, method: :delete, data: { confirm: 'Are you sure?' } %></p>
