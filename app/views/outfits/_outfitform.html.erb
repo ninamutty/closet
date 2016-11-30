@@ -27,27 +27,24 @@
     <%= f.label :reworn_count %><br>
     <%= f.number_field :reworn_count %>
   </div>
-  <div class="field">
+  <div class="field favorite-field">
     <%= f.label :favorite %><br>
     <%= f.check_box :favorite %>
   </div>
 
-  <!-- <div class="field">
-    <%# f.label :photo %><br>
-    <%# f.file_field :photo %>
-  </div> -->
   <%= f.fields_for :photos do |photos_form| %>
-       <%= photos_form.label :image %>
        <%= photos_form.file_field :image %>
    <% end %>
 
 
-
-
-  <div class="field">
-    <%= f.label :tags %>
-    <%= f.collection_check_boxes(:tag_ids, Tag.all, :id, :label) %>
+  <div class="field" id="tags-input-div">
+    <%= f.label :tags, class: "tags-label"%>
+    <%= f.collection_check_boxes(:tag_ids, Tag.all, :id, :label) do |b|%>
+      <%= b.label(class: "outfit-form-check-box") { b.check_box + b.text }%>
+    <% end %>
   </div>
+
+
 
   <div class="actions">
     <%= f.submit %>

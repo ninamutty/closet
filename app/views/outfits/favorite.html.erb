@@ -1,25 +1,50 @@
 <% unless @user_outfits == nil %>
-  <% if @category == nil || @category == ''  %>
-  <h3> Categories </h3>
-    <p> <%= link_to "Casual", category_path(category: 'casual', favorite: true, tagged_outfits: @tagged_outfits) %> </p>
-    <p> <%= link_to "Business", category_path(category: 'business', favorite: true, tagged_outfits: @tagged_outfits) %> </p>
-    <p> <%= link_to "Night Out", category_path(category: 'night_out', favorite: true, tagged_outfits: @tagged_outfits) %> </p>
-    <p> <%= link_to "Fancy", category_path(category: 'fancy', favorite: true, tagged_outfits: @tagged_outfits) %> </p>
-    <% end %>
+<div class="filter-menu-container">
+<div class="filter-menu">
+    <h3><%= link_to "All", outfits_path %></h3>
+</div>
 
-    <% if @tagged_outfits == nil %>
-    <%= form_tag(tags_path, method: :get) do %>
-      <% @tags.each do |tag| %>
-        <%= hidden_field_tag :favorite, true %>
-        <%= hidden_field_tag :category, @category %>
-        <%= label_tag(tag.label) %>
-        <%= check_box_tag "search_tags[]", tag.label %>
-      <% end %>
-      <%= submit_tag("SEARCH", class: 'secondary button search-button') %>
-    <% end %>
-  <% end %>
+<% if @category == nil || @category == ''  %>
+<div class="filter-menu">
+<ul class="dropdown menu"  data-dropdown-menu>
+  <li class="has-dropdown menu" >
+    <a href="#"><h3> Categories </h3></a>
+    <ul class="dropdown menu vertical category-dropdown">
+      <li> <%= link_to "Casual", category_path(category: 'casual', favorite: true, tagged_outfits: @tagged_outfits) %> </li>
+      <li> <%= link_to "Business", category_path(category: 'business', favorite: true, tagged_outfits: @tagged_outfits) %> </li>
+      <li> <%= link_to "Night Out", category_path(category: 'night_out', favorite: true, tagged_outfits: @tagged_outfits) %> </li>
+      <li> <%= link_to "Fancy", category_path(category: 'fancy', favorite: true, tagged_outfits: @tagged_outfits) %> </li>
+    </ul>
+  </li>
+</ul>
+</div>
+<% end %>
 
-        <%= render partial: 'sectionindex' %>
+<% if @tagged_outfits == nil %>
+  <div class="filter-menu">
+  <ul class="dropdown menu"  data-dropdown-menu>
+    <li class="has-dropdown menu" >
+      <a href="#"><h3> Tags </h3></a>
+      <ul class="dropdown menu vertical row">
+        <%= form_tag(tags_path, method: :get) do %>
+          <% @tags.each do |tag| %>
+            <%= hidden_field_tag :favorite, true %>
+            <%= hidden_field_tag :category, @category %>
+            <li class="columns small-6 tags-dropdown-form"><a>
+            <%= label_tag(tag.label) %>
+            <%= check_box_tag "search_tags[]", tag.label %>
+            </a></li>
+          <% end %>
+          <%= submit_tag("SEARCH", class: 'secondary button search-button tags-search-button') %>
+        <% end %>
+      </ul>
+    </li>
+  </ul>
+  </div>
+<% end %>
+</div>
+
+  <%= render partial: 'sectionindex' %>
 <% else %>
   <h3> Please <%= link_to 'Sign In', "/auth/facebook", id: "sign_in" %> to Begin </h3>
 <% end %>

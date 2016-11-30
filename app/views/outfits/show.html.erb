@@ -1,58 +1,63 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @outfit.name %>
-</p>
-
-<p>
-  <strong>Last worn:</strong>
-  <%= @outfit.last_worn.to_formatted_s(:long)  %>
-</p>
-
-<p>
-  <strong>Category:</strong>
-  <%= @outfit.category %>
-</p>
-
-<p>
-  <strong>Reworn count:</strong>
-  <%= @outfit.reworn_count %>
-</p>
-
-<p>
-  <strong>Favorite:</strong>
-  <%= @outfit.favorite %>
-</p>
-
-<%# image_tag(@outfit.photo.url(:large), alt: "photo of #{@outfit.name}") %>
-
-<% if @outfit.photos != [] && @outfit.photos.length != 0 %>
-  <% @outfit.photos.each do |photo| %>
-    <%= image_tag(photo.image.url(:large), alt: "photo of #{@outfit.name}") %>
-  <% end %>
-
-<% elsif @outfit.photo.url !=  "/photos/original/missing.png" %>
-  <td><%= link_to(image_tag(@outfit.photo.url(:large), alt: "photo of #{@outfit.name}"), outfit_path(id: @outfit.id)) %></td>
-
-<% else %>
-  <td>No Photo</td>
-<% end %>
+<div class="row main-show-header">
+  <div class="columns small-12 medium-6">
+    <h2 class="outfit-name-show"><%= @outfit.name %></h2>
+  </div>
+  <div class="columns small-7 medium-3 show-icons-containers">
+    <div class="show-icons-controls">
+      <%= link_to((@outfit.favorite ? image_tag('favorite-heart-button.png', alt: 'favorite outfit', size: '20x20') : image_tag('heart.png', alt: 'not a favorite outfit', size: '20x20')), favorite_status_path(id: @outfit.id), method: :patch) %>
+    </div>
+    <div class="show-icons-controls">
+      <%= link_to(image_tag('circular-arrrow.png', alt: 'rewore outfit', size: '20x20'), reworn_path(id: @outfit.id), method: :patch) %>
+    </div>
+  </div>
+  <div class="columns small-5 medium-3 edit-and-back">
+    <p><%= link_to 'Edit', edit_outfit_path(@outfit) %> |
+    <%= link_to 'Back', :back %></p>
+  </div>
+</div>
 
 
-
-
-
-
-<% unless @tags.length == 0 %>
-  <p>
-    <strong>Tags:</strong>
-    <% @tags.each do |tag| %>
-      <p> <%= tag.label %> </p>
+<div class="row main-show-body">
+<div class="columns small-12 medium-8">
+  <div class="row">
+    <% if @outfit.photos != [] && @outfit.photos.length != 0 %>
+      <% @outfit.photos.each do |photo| %>
+        <div class="columns small-12 large-6 photos">
+        <%= image_tag(photo.image.url(:large), alt: "photo of #{@outfit.name}") %>
+        </div>
+      <% end %>
+    <% elsif @outfit.photo.url !=  "/photos/original/missing.png" %>
+      <div class="columns small-12 photos">
+      <%= link_to(image_tag(@outfit.photo.url(:large), alt: "photo of #{@outfit.name}"), outfit_path(id: @outfit.id)) %>
+      </div>
+    <% else %>
+    <div class="columns small-12 photos">
+      <p>No Photo</p>
+    </div>
     <% end %>
-  </p>
-<% end %>
+  </div>
+</div>
 
 
-<%= link_to 'Edit', edit_outfit_path(@outfit) %> |
-<%= link_to 'Back', outfits_path %>
+<div class="columns small-12 medium-4 show-page-outfit-info">
+  <p class="show-info-section"><span class="show-span">Last worn: </span><%=  @outfit.last_worn.to_formatted_s(:long)  %></p>
+  <p class="show-info-section"><span class="show-span">Reworn count: </span><%= @outfit.reworn_count %></p>
+
+  <p class="show-info-section"><span class="show-span">Category: </span><%= @outfit.category.capitalize %></p>
+
+  <% unless @tags.length == 0 %>
+  <div class="row show-info-section tag-info">
+    <div class="special-tags columns small-4 medium-3">
+      <p> <span class="show-span">Tags: </span></p>
+    </div>
+      <% @tags.each do |tag| %>
+        <div class="special-tags columns small-4 medium-3 <%= "end" if tag == @tags.last %>">
+          <p> <%= tag.label %> </p>
+        </div>
+      <% end %>
+    </div>
+    <% end %>
+</div>
+</div>

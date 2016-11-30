@@ -18,7 +18,7 @@
 /*header {
   border-bottom: 0.75px solid black;
 }*/
-body, a , h3{
+body, a , h3, h2{
   font-family: 'Open Sans Condensed', 'Handlee', sans-serif;
 }
 
@@ -38,6 +38,7 @@ h1, ul, li, section {
 
 img.icon-nav {
   display: inline-block;
+  vertical-align: bottom;
 }
 
 
@@ -62,10 +63,12 @@ a {
 
 section.top-bar-section {
   width: 100%;
+  vertical-align: bottom;
 }
 
 div#responsive-menu {
   display: inline-block;
+  vertical-align: bottom;
 }
 
 .top-bar-title, .top-bar-title a {
@@ -85,6 +88,11 @@ div#responsive-menu {
   padding-bottom: 0;
 }
 
+div#responsive-menu, ul.add-image-ul {
+  margin-top: 3%;
+}
+
+
 
 .outfit-name {
   font-size: 1.3rem;
@@ -99,9 +107,10 @@ div#responsive-menu {
 .filter-menu {
   display: inline-block;
   vertical-align: middle;
-  margin: 0 3.3%;
-  padding: 1%;
+  padding: 0 3%;
 }
+
+.filter-menu:not(:last-of-type) {border-right: 0.5px solid lightgray;}
 
 .filter-menu ul {
   text-align: center;
@@ -113,13 +122,22 @@ div#responsive-menu {
   text-align: center;
   letter-spacing: 1px;
   text-transform: uppercase;
-
 }
 
+.filter-menu-container {
+  width: 100%;
+  text-align: center;
+  margin: 1vh auto;
+}
 .category-dropdown li {
   padding: 4% 0;
   border-bottom: 0.5px solid whitesmoke;
 }
+
+.tags-search-button {
+  margin: 3% 0 2% 0;
+}
+
 
 div.underphoto.row {
   width: 70%;
@@ -133,8 +151,6 @@ div.underphoto.row {
 }
 
 span {text-transform: uppercase;}
-
-
 
 .landing-main-body {
   margin: 10% auto 0 auto;
@@ -174,13 +190,160 @@ label {
   margin-left: 1%;
 }
 
-
-
 article.main-content-article {
   text-align: center;
   border-top: 0.5px solid #e2e2e2;
   padding-top: 5%;
 }
 
+.landing-page, .landing-search-class {  width: 100%; }
 
-.landing-page, .landing-search-class {  width: 100%;}
+h3.force-login, h3.no-outfits {
+  text-align: center;
+  width: 85%;
+  margin: 40% auto 0 auto;
+  font-size: 2rem;
+  font-family: "Open Sans Condensed", sans-serif;
+}
+
+h3.force-login a {
+  color: #2199e8;
+}
+
+.outfit-name-show {
+  font-size: 1.8rem;
+  text-align: center;
+  margin: auto;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  padding-bottom: 3%;
+}
+.photos {
+  text-align: center;
+  margin: 5% 0;
+}
+
+.main-show-header {
+  border-bottom: 1px solid lightgray;
+  padding-bottom: 1%;
+  margin-top: 2%;
+}
+
+.show-icons-controls {
+  display: inline-block;
+  margin: 0 8%;
+  vertical-align: bottom;
+}
+
+.show-icons-containers, .edit-and-back {
+  display: inline-block;
+}
+
+.edit-and-back p a {
+  margin: 0 2%;
+  text-transform: uppercase;
+}
+
+.main-show-body {
+  margin-top: 3%;
+}
+
+.show-page-outfit-info, .edit-and-back {
+  text-align: left;
+  font-size: 1.3rem;
+  letter-spacing: 2px;
+}
+
+.show-info-section, .show-info-section.row {
+  margin-bottom: 8%;
+  margin-left: 10%;
+}
+
+.special-tags.columns.small-4.medium-3 {
+  padding: 0;
+}
+
+.show-span {
+  margin-right: 5%;
+  font-weight: bold;
+}
+
+input#outfit_name, select#outfit_category, input#outfit_reworn_count {width: 70%; margin: auto;}
+
+select#outfit_last_worn_1i, select#outfit_last_worn_2i,
+select#outfit_last_worn_3i {
+  display: inline-block;
+  width: 23%;
+  font-family: 'Open Sans Condensed', 'Handlee', sans-serif;
+}
+
+input#outfit_photos_attributes_0_image, input#outfit_photos_attributes_1_image, input#outfit_photos_attributes_2_image {
+  display: block;
+  text-align: center;
+  width: auto;
+  margin: 3% auto;
+}
+
+form {
+  margin-bottom: 10%;
+}
+
+form {text-align: center;}
+form label {
+  font-size: 1rem;
+  margin-top: 3%;
+}
+
+div.favorite-field > label, div.favorite-field > input {
+  display: inline-block;
+  width: auto;
+}
+
+form div#tags-input-div label.tags-label {
+  display: block;
+}
+form div#tags-input-div  {
+  width: 88%;
+  text-align: center;
+  margin: 3% auto;
+}
+
+.outfit-form-check-box {
+  display: inline-block;
+  margin: 0 5%;
+}
+
+@media only screen and (min-width: 40.063em) {
+  /*h2.outfit-name {
+    font-size: 1.3rem;
+  }*/
+
+  div.outfit-name-div {
+    height: 10%;
+  }
+
+  div.filter-menu a, div.filter-menu a h3 {
+    font-size: 1.5rem;
+  }
+
+  ul.add-image-ul {
+    text-align: right;
+    padding-right: 3%;
+  }
+}
+
+@media only screen and (min-width: 64em) {
+  section.top-bar-section {
+    width: 100%;
+    margin-left: 6%;
+  }
+  ul.add-image-ul {
+    text-align: right;
+    padding-right: 10%;
+  }
+
+  header{
+    padding-top: 0;
+  }
+
+}

@@ -1,13 +1,14 @@
 <!-- <h1>Listing Outfits</h1> -->
 
 <% if @outfits == nil || @outfits.length == 0 %>
-  <p>  You don't have any outfits yet! Please add one to begin!</p>
+  <h3 class="no-outfits">  You don't have any outfits yet! Please add one to begin!</h3>
 <% else %>
   <div class="index-body row" data-equalizer>
     <% @outfits.each do |outfit| %>
-      <article class="main-content-article panel columns small-12 medium-4 <%= "end" if outfit == @outfits.last %>" data-equalizer-watch>
-        <h2 class="outfit-name"><%= link_to(outfit.name, outfit_path(id: outfit.id.to_i))%></h2>
-
+      <article class="main-content-article panel columns small-12 medium-6 large-4 <%= "end" if outfit == @outfits.last %>" data-equalizer-watch>
+        <div class="outfit-name-div">
+          <h2 class="outfit-name"><%= link_to(outfit.name, outfit_path(id: outfit.id.to_i))%></h2>
+        </div>
         <div class="index-photo">
         <% photo = outfit.photo %>
         <% if outfit.photos != [] && outfit.photos.length != 0 %>
@@ -25,7 +26,7 @@
           </div>
 
           <div class="columns small-2 medium-6">
-            <%= link_to(image_tag('circular-arrrow.png', alt: 'reword outfit', size: '20x20'), reworn_path(id: outfit.id), method: :patch) %>
+            <%= link_to(image_tag('circular-arrrow.png', alt: 'rewore outfit', size: '20x20'), reworn_path(id: outfit.id), method: :patch) %>
           </div>
         </div>
 
@@ -38,5 +39,3 @@
     <% end %>
   </div>
 <% end %>
-
-<%= link_to 'New Outfit', new_outfit_path %>

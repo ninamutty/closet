@@ -24,7 +24,7 @@
               <a href="#"><%= image_tag('user.png', alt: 'user profile',  size: '25x25', class: "icon-nav") %></a>
               <ul class="dropdown menu vertical">
                 <% if current_user %>
-                  <li><%= link_to 'Profile', user_path(current_user) %> </li>
+                  <!-- <li><%# link_to 'Profile', user_path(current_user) %> </li> -->
                   <li class=""><%= link_to "Sign out", logout_path, id: "sign_out", method: :delete%> </li>
                 <% else %>
                   <li> <%= link_to "Sign in with Facebook", "/auth/facebook", id: "sign_in" %>  </li>
@@ -41,7 +41,7 @@
           </ul>
 
           <!-- Left Nav Section -->
-          <ul class="columns small-2 header-align-center"> <!-- right -->
+          <ul class="columns small-2 header-align-center add-image-ul"> <!-- right -->
             <li> <%= link_to(image_tag('add.png', alt: 'new outfit', size: '25x25', class: "icon-nav"), new_outfit_path) %></li>
           </ul>
         </section>

@@ -1,26 +1,39 @@
 <% unless @user_outfits == nil %>
-  <ul class="dropdown menu" data-dropdown-menu>
-    <% if @favorite == nil || @favorite == '' %>
-      <li><%= link_to "Favorites", favorite_path(favorite: true, category: @category, tagged_outfits: @tagged_outfits) %> </li>
-    <% end %>
 
-    <li> <a href="#"> Filter By Tags </a> </li>
-    <ul class="menu">
-    <% if @tagged_outfits == nil %>
-    <%= form_tag(tags_path, method: :get) do %>
-      <% @tags.each do |tag| %>
-        <%= hidden_field_tag :category, @category %>
-        <%= hidden_field_tag :favorite, @favorite %>
-      <li><a>
-        <%= label_tag(tag.label) %>
-        <%= check_box_tag "search_tags[]", tag.label %>
-      </a></li>
-      <% end %>
-      <%= submit_tag("SEARCH", class: 'secondary button search-button') %>
-    <% end %>
-    </ul>
-  </ul>
+<div class="filter-menu-container">
+  <div class="filter-menu">
+    <h3><%= link_to "All", outfits_path %></h3>
+  </div>
+
+  <% if @favorite == nil || @favorite == '' || @favorite == false%>
+    <div class="filter-menu">
+      <h3><%= link_to "Favorites", favorite_path(favorite: true, category: @category, tagged_outfits: @tagged_outfits) %> </h3>
+    </div>
   <% end %>
+
+  <% if @tagged_outfits == nil %>
+  <div class="filter-menu">
+  <ul class="dropdown menu"  data-dropdown-menu>
+    <li class="has-dropdown menu" >
+      <a href="#"><h3> Tags </h3></a>
+      <ul class="dropdown menu vertical row">
+        <%= form_tag(tags_path, method: :get) do %>
+          <% @tags.each do |tag| %>
+            <%= hidden_field_tag :category, @category %>
+            <%= hidden_field_tag :favorite, @favorite %>
+            <li class="columns small-6 tags-dropdown-form"><a>
+            <%= label_tag(tag.label) %>
+            <%= check_box_tag "search_tags[]", tag.label %>
+            </a></li>
+          <% end %>
+          <%= submit_tag("SEARCH", class: 'secondary button search-button tags-search-button') %>
+        <% end %>
+      </ul>
+    </li>
+  </ul>
+  </div>
+  <% end %>
+</div>
 
 
   <%= render partial: 'sectionindex' %>

@@ -2,6 +2,10 @@
 
 <div class="filter-menu-container">
 <div class="filter-menu">
+    <h3><%= link_to "All", outfits_path %></h3>
+</div>
+
+<div class="filter-menu">
 <ul class="dropdown menu"  data-dropdown-menu>
   <li class="has-dropdown menu" >
     <a href="#"><h3> Categories </h3></a>
@@ -29,12 +33,12 @@
           <% @tags.each do |tag| %>
             <%= hidden_field_tag :category, @category %>
             <%= hidden_field_tag :favorite, @favorite %>
-            <li class="columns small-4"><a>
+            <li class="columns small-6 medium-6 tags-dropdown-form"><a>
               <%= label_tag(tag.label) %>
               <%= check_box_tag "search_tags[]", tag.label %>
             </a></li>
           <% end %>
-          <%= submit_tag("SEARCH", class: 'secondary button search-button') %>
+          <%= submit_tag("SEARCH", class: 'secondary button search-button tags-search-button') %>
         <% end %>
       <% end %>
   </ul>
