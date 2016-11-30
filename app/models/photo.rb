@@ -6,7 +6,7 @@ class Photo < ActiveRecord::Base
     storage: :s3,
     s3_credentials: {access_key_id: ENV["AWS_KEY"], secret_access_key: ENV["AWS_SECRET"]},
     bucket: ENV["AWS_BUCKET"],
-    url: "s3.amazonaws.com/#{ENV["AWS_BUCKET"]}"
+    :s3_host_name => "s3-us-east-1.amazonaws.com",
 
 
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\z/
