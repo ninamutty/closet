@@ -5,7 +5,7 @@ gem 'paperclip', '~> 4.3', '>= 4.3.6'
 gem "awesome_print"
 
 # Amazon Web Services
-gem 'aws-sdk', '~> 2'
+gem 'aws-sdk', '< 2.0'
 gem 'aws-sdk-rails'
 
 #Foundation Rails gem
