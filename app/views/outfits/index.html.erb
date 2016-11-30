@@ -29,7 +29,7 @@
   <a href="#"><h3> Tags </h3></a>
   <ul class="dropdown menu vertical row">
       <% if @tagged_outfits == nil %>
-        <%= form_tag(tags_path, method: :get) do %>
+        <%= form_tag(tags_path, method: :get, class: 'tags-form-filtering') do %>
           <% @tags.each do |tag| %>
             <%= hidden_field_tag :category, @category %>
             <%= hidden_field_tag :favorite, @favorite %>
