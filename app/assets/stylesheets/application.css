@@ -330,8 +330,9 @@ form div#tags-input-div  {
   div.filter-menu a, div.filter-menu a h3 {
     font-size: 1.5rem;
   }
-  .no-outfits {
-    margin-top: 10%;
+
+  h3.force-login, h3.no-outfits {
+    margin: 20% auto 0 auto;
   }
 
   ul.add-image-ul {
@@ -348,6 +349,10 @@ form div#tags-input-div  {
   ul.add-image-ul {
     text-align: right;
     padding-right: 10%;
+  }
+
+  h3.force-login, h3.no-outfits {
+    margin: 20% auto 0 auto;
   }
 
   header{
