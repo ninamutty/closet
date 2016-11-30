@@ -18,7 +18,7 @@
 /*header {
   border-bottom: 0.75px solid black;
 }*/
-body, a , h3, h2{
+body, a , h3, h2 {
   font-family: 'Open Sans Condensed', 'Handlee', sans-serif;
 }
 
@@ -235,6 +235,11 @@ h3.force-login a {
   vertical-align: bottom;
 }
 
+.form-title {
+  font-size: 1.5rem;
+  text-align: center;
+}
+
 .show-icons-containers, .edit-and-back {
   display: inline-block;
 }
@@ -325,6 +330,9 @@ form div#tags-input-div  {
   div.filter-menu a, div.filter-menu a h3 {
     font-size: 1.5rem;
   }
+  .no-outfits {
+    margin-top: 10%;
+  }
 
   ul.add-image-ul {
     text-align: right;
@@ -344,6 +352,14 @@ form div#tags-input-div  {
 
   header{
     padding-top: 0;
+  }
+
+  .no-outfits {
+    margin-top: 10%;
+  }
+
+  .show-page-outfit-info {
+    margin-top: 5%;
   }
 
 }
