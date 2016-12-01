@@ -9,20 +9,20 @@ Closet is an individual, personal project I created in order to help solve a dai
 
 ##Demos 
 
-### Video Walk-through
-![Video Walk-through](/app/assets/markdown_demo/Closet-Demo)
+Video Walk-through
+![Video Walk-through](/app/assets/images/markdown_demo/Closet-Demo)
 
-### Home Page
-![Home Page](/app/assets/markdown_demo/IMG_0057.jpg)
+Home Page
+![Home Page](/app/assets/images/markdown_demo/IMG_0057.jpg)
 
-### Filtering
-![Filtering](/app/assets/markdown_demo/IMG_0058.jpg)
+Filtering
+![Filtering](/app/assets/images/markdown_demo/IMG_0058.jpg)
 
-### Listing View
-![Listing View](/app/assets/markdown_demo/IMG_0059.jpg)
+Listing View
+![Listing View](/app/assets/images/markdown_demo/IMG_0059.jpg)
 
-### Show View
-![Show View](/app/assets/markdown_demo/IMG_0060.jpg)
+Show View
+![Show View](/app/assets/images/markdown_demo/IMG_0060.jpg)
 
 ***
 
