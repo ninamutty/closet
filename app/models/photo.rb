@@ -3,11 +3,6 @@ class Photo < ActiveRecord::Base
 
 
   has_attached_file :image, :styles => {:small => '200x100>', :medium => "450x300>", :large => "630x420"}
-    #, storage: :s3,
-    # s3_credentials: {access_key_id: ENV["AWS_KEY"], secret_access_key: ENV["AWS_SECRET"]},
-    # bucket: ENV["AWS_BUCKET"],
-    # :s3_host_name => "s3-us-east-1.amazonaws.com"
-
 
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\z/
 end
