@@ -9,7 +9,6 @@ Hosted On Heroku: [http://nm-closet.herokuapp.com/](http://nm-closet.herokuapp.c
 
 ##Demos 
 
-###Video Walk-through[https://www.youtube.com/watch?v=wQatYorMJ9A](https://www.youtube.com/watch?v=wQatYorMJ9A) 
 
 
 ![Home Page](/app/assets/images/markdown_demo/IMG_0057.png)  |  ![Filtering](/app/assets/images/markdown_demo/IMG_0058.png) | ![Listing View](/app/assets/images/markdown_demo/IMG_0059.png) | ![Show View](/app/assets/images/markdown_demo/IMG_0060.png)
@@ -41,7 +40,7 @@ This was the first project I completed without the support system of my teachers
 **Features for the Future**
 
   * Implement an algorithm to show listed outfits weighted by the number of times it's been worn in the past, the last time it was worn, and whether or not it's a favorite.
-  * Track whether data so that a user is only shown outfits that were worn in similar weather.
+  * Track weather data so that a user is only shown outfits that were worn in similar weather.
   * Improve responsiveness
 
   
