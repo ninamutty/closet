@@ -348,6 +348,9 @@ div.filter-button-toggle-menu, .filter-toggle-button {
   margin-left: 5%;
 }
 
+.outfit-form {
+  margin-bottom: 7%;
+}
 
 @media only screen and (min-width: 40.063em) {
   /*h2.outfit-name {
