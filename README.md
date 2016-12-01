@@ -13,16 +13,16 @@ Video Walk-through
 ![Video Walk-through](/app/assets/images/markdown_demo/Closet-Demo.m4v)
 
 Home Page
-![Home Page](/app/assets/images/markdown_demo/IMG_0057.jpg)
+![Home Page](/app/assets/images/markdown_demo/IMG_0057.png)
 
 Filtering
-![Filtering](/app/assets/images/markdown_demo/IMG_0058.jpg)
+![Filtering](/app/assets/images/markdown_demo/IMG_0058.png)
 
 Listing View
-![Listing View](/app/assets/images/markdown_demo/IMG_0059.jpg)
+![Listing View](/app/assets/images/markdown_demo/IMG_0059.png)
 
 Show View
-![Show View](/app/assets/images/markdown_demo/IMG_0060.jpg)
+![Show View](/app/assets/images/markdown_demo/IMG_0060.png)
 
 ***
 
