@@ -10,6 +10,7 @@ Hosted On Heroku: [http://nm-closet.herokuapp.com/](http://nm-closet.herokuapp.c
 ##Demos 
 
 
+**Video Walk Through:** [https://www.youtube.com/watch?v=h8nqAnH9Md8](https://www.youtube.com/watch?v=h8nqAnH9Md8)
 
 ![Home Page](/app/assets/images/markdown_demo/IMG_0057.png)  |  ![Filtering](/app/assets/images/markdown_demo/IMG_0058.png) | ![Listing View](/app/assets/images/markdown_demo/IMG_0059.png) | ![Show View](/app/assets/images/markdown_demo/IMG_0060.png)
 
