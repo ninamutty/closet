@@ -9,7 +9,28 @@ Closet is an individual, personal project I created in order to help solve a dai
 
 ##Demos 
 
+![Video Walk-through](/app/assets/markdown_demo/Closet-Demo)
 
+![Home Page](/app/assets/markdown_demo/IMG_0057.jpg)
 
+![Filtering](/app/assets/markdown_demo/IMG_0058.jpg)
 
-[Video Walk-through](app/assets/markdown_demo/Closet-Demo)
+![Listing View](/app/assets/markdown_demo/IMG_0059.jpg)
+
+![Show View](/app/assets/markdown_demo/IMG_0060.jpg)
+
+***
+
+##Challenges in Making Closet
+
+**Technologies
+
+**Other Stuff
+
+***
+
+##Next Steps
+
+**Technologies
+
+**Features
