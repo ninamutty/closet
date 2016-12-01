@@ -398,4 +398,25 @@ div.filter-button-toggle-menu, .filter-toggle-button {
     margin-top: 5%;
   }
 
+  #filtering-menu {
+    text-align: center;
+    width: 100%;
+    padding: 1% 0;
+    margin: auto;
+  }
+
+  ul#filtering-menu li.filter-menu {
+    padding: 0% 7%;
+    width: 25%;
+    border: none;
+    margin: auto;
+  }
+
+  ul#filtering-menu li.filter-menu a:first-of-type {
+    font-size: 1.4rem;
+    margin-left: 5%;
+    padding-right: 35%;
+    border: none;
+  }
+
 }
