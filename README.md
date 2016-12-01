@@ -9,7 +9,7 @@ Closet is an individual, personal project I created in order to help solve a dai
 
 ##Demos 
 
-![Video Walk-through](/app/assets/images/markdown_demo/Closet-Demo.m4v) 
+[Video Walk-through](https://www.youtube.com/watch?v=wQatYorMJ9A) 
 
 
 ![Home Page](/app/assets/images/markdown_demo/IMG_0057.png)"Home Page"  |  ![Filtering](/app/assets/images/markdown_demo/IMG_0058.png)"Filtering" | ![Listing View](/app/assets/images/markdown_demo/IMG_0059.png)"Listing View"  | ![Show View](/app/assets/images/markdown_demo/IMG_0060.png)"Show View"
