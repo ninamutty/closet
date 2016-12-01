@@ -1,35 +1,36 @@
 <% unless @user_outfits == nil %>
-<div class="filter-menu-container">
-  <div class="filter-menu">
-      <h3><%= link_to "All", outfits_path %></h3>
-  </div>
+<div class="title-bar filter-button-toggle-menu" data-responsive-toggle="filtering-menu" data-hide-for="large">
+  <button data-toggle class="filter-toggle-button"><h2>FILTER</h2></button>
+</div>
+
+<ul id ="filtering-menu" class="vertical menu large-horizontal" data-responsive-menu="accordion large-dropdown">
+
+  <li class="filter-menu">
+    <%= link_to "All", outfits_path %>
+  </li>
+
 
   <% if @category == nil || @category == '' %>
-  <div class="filter-menu">
-  <ul class="dropdown menu"  data-dropdown-menu>
-    <li class="has-dropdown menu" >
-      <a href="#"><h3> Categories </h3></a>
-      <ul class="dropdown menu vertical category-dropdown">
+  <li class="filter-menu">
+    <a href="#"> Categories </a>
+    <ul class="vertical menu category-menu">
         <li> <%= link_to "Casual", category_path(category: 'casual',  tagged_outfits: @outfits, favorite: @favorite) %> </li>
         <li> <%= link_to "Business", category_path(category: 'business',  tagged_outfits: @outfits, favorite: @favorite) %> </li>
         <li> <%= link_to "Night Out", category_path(category: 'night_out',  tagged_outfits: @outfits, favorite: @favorite) %> </li>
         <li> <%= link_to "Fancy", category_path(category: 'fancy',  tagged_outfits: @outfits, favorite: @favorite) %> </li>
-      </ul>
-    </li>
-  </ul>
-  </div>
+    </ul>
+  </li>
   <% end %>
 
 
   <% if @favorite == nil || @favorite == '' || @favorite == false %>
-  <div class="filter-menu">
-    <h3><%= link_to "Favorites", favorite_path(favorite: true, tagged_outfits: @outfits, category: @category) %> </h3>
-  </div>
+    <li class="filter-menu">
+      <%= link_to "Favorites", favorite_path(favorite: true) %>
+    </li>
   <% end %>
+</ul>
 
-    <%= render partial: '/outfits/sectionindex' %>
-
-
+<%= render partial: '/outfits/sectionindex' %>
 
 
 </div>

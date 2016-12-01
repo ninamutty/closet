@@ -1,22 +1,25 @@
 <% unless @user_outfits == nil %>
 
-<div class="filter-menu-container">
-  <div class="filter-menu">
-    <h3><%= link_to "All", outfits_path %></h3>
-  </div>
+<div class="title-bar filter-button-toggle-menu" data-responsive-toggle="filtering-menu" data-hide-for="large">
+  <button data-toggle class="filter-toggle-button"><h2>FILTER</h2></button>
+</div>
+
+<ul id ="filtering-menu" class="vertical menu large-horizontal" data-responsive-menu="accordion large-dropdown">
+
+  <li class="filter-menu">
+    <%= link_to "All", outfits_path %>
+  </li>
 
   <% if @favorite == nil || @favorite == '' || @favorite == false%>
-    <div class="filter-menu">
-      <h3><%= link_to "Favorites", favorite_path(favorite: true, category: @category, tagged_outfits: @tagged_outfits) %> </h3>
-    </div>
+    <li class="filter-menu">
+      <%= link_to "Favorites", favorite_path(favorite: true) %>
+    </li>
   <% end %>
 
   <% if @tagged_outfits == nil %>
-  <div class="filter-menu">
-  <ul class="dropdown menu"  data-dropdown-menu>
-    <li class="has-dropdown menu" >
-      <a href="#"><h3> Tags </h3></a>
-      <ul class="dropdown menu vertical row">
+  <li class="filter-menu">
+    <a href="#"> Tags </a>
+    <ul class="vertical menu">
         <%= form_tag(tags_path, method: :get) do %>
           <% @tags.each do |tag| %>
             <%= hidden_field_tag :category, @category %>
@@ -28,15 +31,13 @@
           <% end %>
           <%= submit_tag("SEARCH", class: 'secondary button search-button tags-search-button') %>
         <% end %>
-      </ul>
-    </li>
-  </ul>
-  </div>
+    </ul>
+  </li>
   <% end %>
-</div>
+</ul>
 
+<%= render partial: 'sectionindex' %>
 
-  <%= render partial: 'sectionindex' %>
 <% else %>
   <h3> Please <%= link_to 'Sign In', "/auth/facebook", id: "sign_in" %> to Begin </h3>
 <% end %>

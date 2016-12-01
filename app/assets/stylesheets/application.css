@@ -110,7 +110,6 @@ div#responsive-menu, ul.add-image-ul {
   padding: 0 3%;
 }
 
-.filter-menu:not(:last-of-type) {border-right: 0.5px solid lightgray;}
 
 .filter-menu ul {
   text-align: center;
@@ -129,9 +128,12 @@ div#responsive-menu, ul.add-image-ul {
   text-align: center;
   margin: 1vh auto;
 }
-.category-dropdown li {
-  padding: 4% 0;
-  border-bottom: 0.5px solid whitesmoke;
+.category-menu li {
+  padding: 1% 0;
+}
+
+.category-menu {
+  width: 95%
 }
 
 .tags-search-button {
@@ -317,6 +319,35 @@ form div#tags-input-div  {
   display: inline-block;
   margin: 0 5%;
 }
+
+div.filter-button-toggle-menu, .filter-toggle-button {
+  background-color: white;
+  color: black;
+  padding: 0;
+}
+
+.filter-toggle-button {
+  margin-left: 7.5%;
+}
+
+.filter-toggle-button h2 {
+  font-weight: bold;
+  letter-spacing: 3px;
+  font-size: 1.5rem;
+}
+
+#filtering-menu {
+  width: 95%;
+  border: none;
+}
+
+#filtering-menu li a {
+  font-size: 1.2rem;
+  border-top: .7px solid whitesmoke;
+  padding: 3% 0;
+  margin-left: 5%;
+}
+
 
 @media only screen and (min-width: 40.063em) {
   /*h2.outfit-name {

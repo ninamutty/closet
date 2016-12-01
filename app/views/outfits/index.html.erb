@@ -1,34 +1,33 @@
 <p id="notice"><%= notice %></p>
 
-<div class="filter-menu-container">
-<div class="filter-menu">
-    <h3><%= link_to "All", outfits_path %></h3>
+<div class="title-bar filter-button-toggle-menu" data-responsive-toggle="filtering-menu" data-hide-for="large">
+  <button data-toggle class="filter-toggle-button"><h2>FILTER</h2></button>
 </div>
 
-<div class="filter-menu">
-<ul class="dropdown menu"  data-dropdown-menu>
-  <li class="has-dropdown menu" >
-    <a href="#"><h3> Categories </h3></a>
-    <ul class="dropdown menu vertical category-dropdown">
+<ul id ="filtering-menu" class="vertical menu large-horizontal" data-responsive-menu="accordion large-dropdown">
+
+  <li class="filter-menu">
+    <%= link_to "All", outfits_path %>
+  </li>
+
+  <li class="filter-menu">
+    <a href="#"> Categories </a>
+    <ul class="vertical menu category-menu">
       <li> <%= link_to "Casual", category_path(category: 'casual') %> </li>
       <li> <%= link_to "Business", category_path(category: 'business') %> </li>
       <li> <%= link_to "Night Out", category_path(category: 'night_out') %> </li>
       <li> <%= link_to "Fancy", category_path(category: 'fancy') %> </li>
     </ul>
   </li>
-</ul>
-</div>
 
-<div class="filter-menu">
-  <h3><%= link_to "Favorites", favorite_path(favorite: true) %> </h3>
-</div>
+  <li class="filter-menu">
+    <%= link_to "Favorites", favorite_path(favorite: true) %>
+  </li>
 
-<div class="filter-menu">
-  <ul class="dropdown menu"  data-dropdown-menu>
-  <li class="has-dropdown menu" >
-  <a href="#"><h3> Tags </h3></a>
-  <ul class="dropdown menu vertical row">
-      <% if @tagged_outfits == nil %>
+  <% if @tagged_outfits == nil %>
+  <li class="filter-menu">
+    <a href="#"> Tags </a>
+    <ul class="vertical menu">
         <%= form_tag(tags_path, method: :get, class: 'tags-form-filtering') do %>
           <% @tags.each do |tag| %>
             <%= hidden_field_tag :category, @category %>
@@ -40,13 +39,10 @@
           <% end %>
           <%= submit_tag("SEARCH", class: 'secondary button search-button tags-search-button') %>
         <% end %>
-      <% end %>
-  </ul>
+    </ul>
   </li>
+  <% end %>
 </ul>
-</div>
-</div>
-
 
 
 <%= render partial: 'sectionindex' %>
