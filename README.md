@@ -1,7 +1,7 @@
 **Closet**
 ==============
 
-Closet is an individual, personal project I created in order to help solve a daily problem of mine - deciding what to wear in the morning! I noticed that I often took precious time and brain power trying on different outfits and by the end of the ordeal my clothes would be strewn across my room. In an effort to make my life easier and cleaner, I created Closet - a Rails web-app to keep track of the outfits that I know I like!
+Closet is an individual, personal project I created in order to help solve a daily problem of mine - deciding what to wear in the morning! I noticed that I often took precious time trying on different outfits and by the end of the ordeal my clothes would be strewn across my room. In an effort to make my life easier and cleaner, I created Closet - a Rails web-app to keep track of the outfits that I know I like!
 
 Hosted On Heroku: [http://nm-closet.herokuapp.com/](http://nm-closet.herokuapp.com/) 
 
