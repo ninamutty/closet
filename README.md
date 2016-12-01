@@ -18,14 +18,14 @@ Closet is an individual, personal project I created in order to help solve a dai
 
 ##Challenges in Making Closet
 
-**Technologies
+**Technologies**
 
-**Other Stuff
+**Other Stuff**
 
 ***
 
 ##Next Steps
 
-**Technologies
+**Technologies**
 
-**Features
+**Features**
