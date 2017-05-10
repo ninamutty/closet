@@ -7,7 +7,7 @@ Hosted On Heroku: [http://nm-closet.herokuapp.com/](http://nm-closet.herokuapp.c
 
 ***
 
-##Demos 
+## Demos 
 
 
 **Video Walk Through:** [https://www.youtube.com/watch?v=h8nqAnH9Md8](https://www.youtube.com/watch?v=h8nqAnH9Md8)
@@ -16,7 +16,7 @@ Hosted On Heroku: [http://nm-closet.herokuapp.com/](http://nm-closet.herokuapp.c
 
 ***
 
-##Challenges in Making Closet
+## Challenges in Making Closet
 
 **Challenges**
    
@@ -30,7 +30,7 @@ This was the first project I completed without the support system of my teachers
 
 ***
 
-##Next Steps
+## Next Steps
 
 **Technologies**
 
